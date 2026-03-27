@@ -3,6 +3,10 @@ export const environment = {
   production: false,
 
   mfAgreementInquiry: '/mf-agreement-inquiry',
+  mfTransactionInquiry: 'http://localhost:4202',
+  mfCollectionDownload: 'http://localhost:4203',
+  mfInvoiceUpload: 'http://localhost:4204',
+  mfFileTracking: 'http://localhost:4205',
 
   search: {
     privateKeyCryp:

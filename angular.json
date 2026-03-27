@@ -20,7 +20,9 @@
       "architect": {
         "build": {
           "builder": "@angular-architects/native-federation:build",
-          "options": {},
+          "options": {
+            "target": "demo-angular20:esbuild:development"
+          },
           "configurations": {
             "local": {
               "target": "demo-angular20:esbuild:local"
@@ -42,20 +44,21 @@
           "options": {
             "target": "demo-angular20:serve-original:development",
             "rebuildDelay": 0,
-            "dev": true
+            "dev": true,
+            "port": 4200
           },
           "configurations": {
             "local": {
-              "target": "demo-angular20:esbuild:local"
+              "target": "demo-angular20:serve-original:local"
             },
             "development": {
-              "target": "demo-angular20:esbuild:development"
+              "target": "demo-angular20:serve-original:development"
             },
              "qa": {
-              "target": "demo-angular20:esbuild:qa"
+              "target": "demo-angular20:serve-original:qa"
             },
             "production": {
-              "target": "demo-angular20:esbuild:production"
+              "target": "demo-angular20:serve-original:production"
             }
           },
           "defaultConfiguration": "development"
