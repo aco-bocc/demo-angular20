@@ -33,7 +33,7 @@
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.2s ease;
-  color: var(--color-carbon-light-700-p, #555f83);
+  color: var(--bocc-text-secondary);
   user-select: none;
   outline: none;
   border: none;
@@ -46,11 +46,11 @@
 
   &-icon {
     font-size: 30px;
-    color: var(--color-brand-blue-700-p, #0081ff);
+    color: var(--bocc-brand-primary);
   }
 
   &-label {
-    color: var(--Text-color-gray-dark, #1B1C1E);
+    color: var(--class-black);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -65,8 +65,8 @@
 
   /* Estados */
   &:hover:not(.is-disabled) {
-    background-color: var(--Color-Carbon-light-100, #f8f9fd);
-    color: var(--color-brand-blue-700-p, #0081ff);
+    background-color: var(--bocc-surface-canvas);
+    color: var(--bocc-brand-primary);
 
     .bocc-menu-item-arrow {
       opacity: 1;
@@ -75,8 +75,8 @@
   }
 
   &.is-selected {
-    background-color: var(--Color-Brand-blue-100, #f0faff);
-    color: var(--color-brand-blue-700-p, #0081ff);
+    background-color: var(--bocc-surface-active);
+    color: var(--bocc-brand-primary);
     font-weight: 600;
 
     .bocc-menu-item-arrow {
@@ -91,6 +91,6 @@
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px var(--Color-Brand-blue-200, #e2f1ff);
+    box-shadow: 0 0 0 2px var(--bocc-surface-active);
   }
 }

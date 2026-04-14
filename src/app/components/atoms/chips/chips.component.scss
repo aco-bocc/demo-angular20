@@ -11,10 +11,10 @@
   width: fit-content;
   transition: all 0.2s ease;
   border-radius: var(--Border-Radius-4xl, 56px);
-  border: 1px solid var(--Color-Carbon-light-400, #ADBAE6);
-  background: var(--Color-Carbon-light-50, #FFF);
+  border: 1px solid var(--bocc-border-hover);
+  background: var(--bocc-surface-main);
 
-  color: var(--color-carbon-light-700-p, #555F83);
+  color: var(--bocc-text-secondary);
   cursor: default;
 
   /* Tamaños */
@@ -56,13 +56,13 @@
 
   /* Estados */
   &:not(.is-disabled):hover {
-    border: 1px solid var(--color-brand-blue-700-p, #0081FF);
-    background: var(--Color-Carbon-light-50, #FFF);
+    border: 1px solid var(--bocc-brand-primary);
+    background: var(--bocc-surface-main);
   }
 
   &.is-selected {
-    border: 1px solid var(--color-brand-blue-700-p, #0081FF);
-    background: var(--Color-Brand-blue-200, #E2F1FF);
+    border: 1px solid var(--bocc-brand-primary);
+    background: var(--bocc-surface-active);
 
     /* Bottom/Lighter/$bottom-2 */
     box-shadow: 0 2px 2px 0 rgba(173, 186, 230, 0.40);
@@ -77,13 +77,13 @@
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
-    color: var(--Color-Carbon-light-400, #ADBAE6);
+    color: var(--bocc-text-disabled);
 
-    border: 1px solid var(--Color-Carbon-light-400, #ADBAE6);
-    background: var(--Color-Carbon-light-200, #EFF2FC);
+    border: 1px solid var(--bocc-border-disabled);
+    background: var(--bocc-surface-disabled);
 
     .bocc-chip-icon {
-      color: var(--Color-Carbon-light-400, #ADBAE6);
+      color: var(--bocc-text-disabled);
     }
   }
 
@@ -92,7 +92,7 @@
     align-items: center;
     justify-content: center;
     padding: 4px 4px 4px 0;
-    color: var(--color-brand-blue-700-p, #0081FF);
+    color: var(--bocc-brand-primary);
   }
 
   .bocc-chip-label {

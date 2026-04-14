@@ -31,11 +31,11 @@
     letter-spacing: 0.84px;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: var(--color-carbon-light-700-p, #555f83);
+    color: var(--bocc-text-secondary);
 
     &:hover:not(:disabled):not(.is-active) {
-      background: var(--Color-Carbon-light-100, #f8f9fd);
-      color: var(--color-brand-blue-700-p, #0081ff);
+      background: var(--bocc-surface-canvas);
+      color: var(--bocc-brand-primary);
     }
 
     &:disabled {
@@ -44,11 +44,11 @@
     }
 
     &.is-active {
-      color: #fff;
+      color: var(--bocc-text-on-brand);
       cursor: default;
       border-radius: var(--Border-Radius-sm, 4px);
-      border: 1px solid var(--Text-color-link, #0081FF);
-      background: var(--Gradients-Basics-G-Blue-Bottom-900, linear-gradient(180deg, #0056CB 0%, #00246F 100%));
+      border: 1px solid var(--bocc-text-link);
+      background: var(--bocc-gradient-primary);
     }
   }
 
@@ -57,7 +57,7 @@
     align-items: center;
     gap: 8px;
     padding: 0 5px;
-    color: var(--Text-color-link, #0081FF);
+    color: var(--bocc-text-link);
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -70,7 +70,7 @@
     }
 
     &:hover:not(:disabled) {
-      background: var(--Color-Brand-blue-100, #f0faff);
+      background: var(--bocc-surface-canvas);
       border-radius: 4px;
     }
   }
@@ -80,7 +80,7 @@
 
     &.is-open {
       .bocc-pagination-ellipsis {
-        border-color: #0056cb;
+        border-color: var(--bocc-brand-primary-hover);
       }
 
       .bocc-pagination-ellipsis-arrow {
@@ -99,16 +99,16 @@
     max-width: 64px;
     min-height: 32px;
     padding: 0 8px 0 12px;
-    background-color: #fff;
+    background-color: var(--bocc-surface-main);
     border-radius: var(--Border-Radius-sm, 4px);
-    border: 1px solid var(--Color-carbon-light-400, #ADBAE6);
-    background: var(--Color-carbon-light-50, #FFF);
+    border: 1px solid var(--bocc-border-hover);
+    background: var(--bocc-surface-main);
     cursor: pointer;
     transition: all 0.2s ease;
     gap: var(--Spacing-1, 8px);
 
     &-text {
-      color: var(--Color-carbon-light-400, #ADBAE6);
+      color: var(--bocc-text-placeholder);
 
       /* Desktop/Body 2/medium */
       font-family: Poppins;
@@ -127,11 +127,11 @@
       background-repeat: no-repeat;
       background-size: contain;
       transition: transform 0.2s ease;
-      color: var(--color-carbon-light-700-p, #555F83);
+      color: var(--bocc-text-secondary);
     }
 
     &:hover {
-      border-color: #0056cb;
+      border-color: var(--bocc-brand-primary-hover);
     }
   }
 
@@ -145,10 +145,10 @@
     overflow-y: auto;
     margin: 0;
     padding: 8px 0;
-    background-color: #fff;
-    border: 1px solid var(--Color-Carbon-light-200, #eff2fc);
+    background-color: var(--bocc-surface-main);
+    border: 1px solid var(--bocc-border-disabled);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--bocc-shadow-md);
     z-index: 100;
     list-style: none;
 
@@ -157,7 +157,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: var(--Color-Carbon-light-300, #d7def0);
+      background: var(--bocc-border-default);
       border-radius: 10px;
     }
   }
@@ -167,12 +167,12 @@
     text-align: center;
     cursor: pointer;
     font-size: 14px;
-    color: var(--color-carbon-light-700-p, #555f83);
+    color: var(--bocc-text-secondary);
     transition: all 0.2s;
 
     &:hover {
-      background-color: var(--Color-Brand-blue-100, #f0faff);
-      color: var(--color-brand-blue-700-p, #0081ff);
+      background-color: var(--bocc-surface-canvas);
+      color: var(--bocc-brand-primary);
     }
   }
 }

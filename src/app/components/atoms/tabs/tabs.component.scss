@@ -19,7 +19,7 @@
     padding: 12px 0;
     cursor: pointer;
     position: relative;
-    color: var(--color-carbon-light-700-p, #555f83);
+    color: var(--bocc-text-secondary);
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -31,11 +31,11 @@
     outline: none;
 
     &:hover:not(.is-active) {
-      color: var(--Text-color-link, #0081FF);
+      color: var(--bocc-text-link);
     }
 
     &.is-active {
-      color: var(--Text-color-link, #0081FF);
+      color: var(--bocc-text-link);
       text-align: center;
 
       /* 🖥 Desktop/Small text/medium */
@@ -47,14 +47,14 @@
       justify-content: center;
       align-items: center;
       border-radius: 0 0 var(--Border-Radius-sm, 4px) var(--Border-Radius-sm, 4px);
-      border-right: 1px solid var(--Button-hover-y-bordes-primary, #0081FF);
-      border-bottom: 1px solid var(--Button-hover-y-bordes-primary, #0081FF);
-      border-left: 1px solid var(--Button-hover-y-bordes-primary, #0081FF);
+      border-right: 1px solid var(--bocc-border-active);
+      border-bottom: 1px solid var(--bocc-border-active);
+      border-left: 1px solid var(--bocc-border-active);
 
     }
 
     &:focus-visible {
-      box-shadow: 0 0 0 2px var(--Color-Brand-blue-200, #e2f1ff);
+      box-shadow: 0 0 0 2px var(--bocc-surface-active);
       border-radius: 4px;
     }
   }
