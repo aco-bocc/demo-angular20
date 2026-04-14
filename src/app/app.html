@@ -68,6 +68,47 @@
       </div>
     </div>
   </section>
+  <!-- ── Tooltip Laboratory Section ──────────────────────────────────────── -->
+  <section class="demo-section">
+    <h2>3. Tooltip Laboratory (Atoms & Directives)</h2>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Trigger orientations</h3>
+        <div class="test-container centered">
+          <div class="tooltip-test-item" boccTooltip="Tooltip pointing Up" orientation="top">
+            <img src="assets/icons/Info.svg" alt="info">
+            <span>Hover Top</span>
+          </div>
+
+          <div class="tooltip-test-item" boccTooltip="IOD: Indicador de operación de descuento" orientation="bottom">
+            <img src="assets/icons/Info.svg" alt="info">
+            <span>Hover Bottom (Figma)</span>
+          </div>
+
+          <div class="tooltip-test-item" boccTooltip="Information to the right" orientation="right">
+            <img src="assets/icons/Info.svg" alt="info">
+            <span>Hover Right</span>
+          </div>
+
+          <div class="tooltip-test-item" boccTooltip="Information to the left" orientation="left">
+            <img src="assets/icons/Info.svg" alt="info">
+            <span>Hover Left</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Design System Validation</h3>
+        <p class="support-text">Verify typography (Poppins), colors (Navy 900), and shadow (Light Blue 40%).</p>
+        <div class="test-container centered">
+          <button class="bocc-btn-test" boccTooltip="Functional tooltip on a button element" orientation="top">
+            Hover Button Test
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
 
 <router-outlet></router-outlet>

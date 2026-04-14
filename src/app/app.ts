@@ -4,9 +4,11 @@ import { MyIpService } from './services/my-ip.service';
 import { InputTextComponent } from './components/atoms/input-text/input-text.component';
 import { InputSelectComponent } from './components/atoms/input-select/input-select.component';
 
+import { TooltipDirective } from './directives/tooltip.directive';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, InputTextComponent, InputSelectComponent],
+  imports: [RouterOutlet, InputTextComponent, InputSelectComponent, TooltipDirective],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
