@@ -1,3 +1,16 @@
+/**
+ * TooltipComponent – Angular 20 Standalone
+ * ─────────────────────────────────────────────────────────────────
+ * Independent tooltip atom. Displays a floating text balloon in
+ * one of four orientations (top, bottom, left, right).
+ * Controlled externally via show() / hide() public methods or
+ * by setting the isVisible signal from a parent component.
+ * Design reference: Figma "BOC (Dev)" – Section Tooltip
+ *
+ * @author  : Cristian Quintana / Contact & Business IT
+ * @version : 1.0 – 2026/04/13 (Angular 20 rewrite with signals)
+ * ─────────────────────────────────────────────────────────────────
+ */
 import { Component, input, signal, ChangeDetectionStrategy } from '@angular/core';
 
 export type TooltipOrientation = 'top' | 'bottom' | 'left' | 'right';

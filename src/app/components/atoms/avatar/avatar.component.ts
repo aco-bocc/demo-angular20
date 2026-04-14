@@ -1,3 +1,14 @@
+/**
+ * AvatarComponent – Angular 20 Standalone
+ * ─────────────────────────────────────────────────────────────────
+ * Avatar atom. Displays a user's profile image or initials,
+ * a presence status indicator, and an expandable profile panel.
+ * Design reference: Figma "BOC (Dev)" – Section Avatar / User Profile
+ *
+ * @author  : Cristian Quintana / Contact & Business IT
+ * @version : 1.0 – 2026/04/13 (Angular 20 rewrite with signals)
+ * ─────────────────────────────────────────────────────────────────
+ */
 import { Component, input } from '@angular/core';
 
 export type AvatarSize = '16' | '24' | '32';

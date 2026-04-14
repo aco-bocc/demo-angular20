@@ -4,8 +4,8 @@
  * Dropdown select atom.
  * Design reference: Figma "BOC (Dev)" – Section 11. Dropdown
  *
- * Author  : Cristian Quintana / Contact & Business IT
- * Version : 2.0 – 2026/04/13 (Angular 20 rewrite with signals)
+ * @author  : Cristian Quintana / Contact & Business IT
+ * @version : 1.0 – 2026/04/13 (Angular 20 rewrite with signals)
  * ─────────────────────────────────────────────────────────────────
  */
 import {
