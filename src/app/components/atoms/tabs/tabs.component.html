@@ -1,0 +1,14 @@
+<div class="bocc-tabs">
+  <ul class="bocc-tabs-list" role="tablist">
+    @for (tab of tabs(); track tab.id) {
+    <li class="bocc-tabs-item" [class.is-active]="tab.id === activeTabId()" (click)="onTabClick(tab.id)" role="tab"
+      [attr.aria-selected]="tab.id === activeTabId()" [attr.aria-controls]="'tab-panel-' + tab.id" tabindex="0"
+      (keydown.enter)="onTabClick(tab.id)" (keydown.space)="onTabClick(tab.id)">
+      @if (tab.icon) {
+      <i [class]="'bocc-tabs-icon fa-solid fa-' + tab.icon" aria-hidden="true"></i>
+      }
+      <span class="bocc-tabs-label">{{ tab.label }}</span>
+    </li>
+    }
+  </ul>
+</div>
