@@ -1,5 +1,4 @@
 <div class="bocc-avatars">
-  <!-- Avatar graphic / placeholder / initials wrapper -->
   <div class="bocc-avatar-photo" [class.is-image]="imageMode() === 'image'" [class.is-initials]="imageMode() === 'initials'" [class.is-placeholder]="imageMode() === 'placeholder'" [class.is-none]="imageMode() === 'none'">
     @if (imageMode() === 'image' && imageUrl()) {
       <img [src]="imageUrl()" alt="Avatar" class="bocc-avatar-img" />
@@ -13,7 +12,6 @@
     }
   </div>
 
-  <!-- Status indicator -->
   @if (status() !== 'none') {
     <div class="bocc-avatar-status"></div>
   }

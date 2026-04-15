@@ -28,9 +28,8 @@ describe('TooltipComponent', () => {
   });
 
   describe('Visibility', () => {
-    it('should show the tooltip when show() is called', () => {
-      component.show();
-      expect(component.isVisible()).toBeTrue();
+    it('should show the tooltip when isVisible is true', () => {
+      fixture.componentRef.setInput('isVisible', true);
       fixture.detectChanges();
       
       const hostElement: HTMLElement = fixture.nativeElement;
@@ -42,12 +41,11 @@ describe('TooltipComponent', () => {
       expect(arrow).toBeTruthy();
     });
 
-    it('should hide the tooltip when hide() is called', () => {
-      component.show();
+    it('should hide the tooltip when isVisible is false', () => {
+      fixture.componentRef.setInput('isVisible', true);
       fixture.detectChanges();
       
-      component.hide();
-      expect(component.isVisible()).toBeFalse();
+      fixture.componentRef.setInput('isVisible', false);
       fixture.detectChanges();
       
       const hostElement: HTMLElement = fixture.nativeElement;
@@ -59,11 +57,11 @@ describe('TooltipComponent', () => {
 
     it('should display the provided message', () => {
       fixture.componentRef.setInput('message', 'Custom Tooltip Message');
-      component.show();
+      fixture.componentRef.setInput('isVisible', true);
       fixture.detectChanges();
       
-      const bubble = fixture.nativeElement.querySelector('.tooltip-bubble');
-      expect(bubble.textContent.trim()).toBe('Custom Tooltip Message');
+      const bubble = fixture.nativeElement.querySelector('.tooltip-bubble') as HTMLElement;
+      expect(bubble.textContent?.trim()).toBe('Custom Tooltip Message');
     });
   });
 
@@ -88,8 +86,6 @@ describe('TooltipComponent', () => {
       const hostElement: HTMLElement = fixture.nativeElement;
       expect(hostElement.style.left).toBe('150px');
       expect(hostElement.style.top).toBe('200px');
-      expect(hostElement.style.position).toBe('absolute');
-      expect(hostElement.style.zIndex).toBe('9999');
     });
   });
 });

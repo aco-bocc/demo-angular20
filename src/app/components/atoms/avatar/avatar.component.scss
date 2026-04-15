@@ -1,7 +1,5 @@
 :host {
-  /* Design Tokens mapped to CSS variables */
   --bocc-avatar-gap: 8px;
-  
   --bocc-avatar-title-color: #1b1c1e;
   --bocc-avatar-title-font-size: 14px;
   --bocc-avatar-title-font-weight: 500;
@@ -14,14 +12,14 @@
   --bocc-avatar-subtitle-line-height: 16px;
   --bocc-avatar-subtitle-letter-spacing: 0.7px;
 
-  /* Status Colors */
+
   --bocc-avatar-status-disponible: #00ca82;
   --bocc-avatar-status-ocupado: #ffaa31;
   --bocc-avatar-status-no-disponible: #e24c4c;
   --bocc-avatar-status-desconectado: #adbada;
   --bocc-avatar-status-border: #ffffff;
   
-  /* Fallback/Initials Colors */
+
   --bocc-avatar-bg-default: #e2f1ff;
   --bocc-avatar-text-initials: #0081ff; /* Approximated based on typical initial styles */
 
@@ -32,7 +30,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Base structural styles */
 .bocc-avatars {
   position: relative;
   display: inline-flex;
@@ -48,6 +45,7 @@
   background-color: var(--bocc-avatar-bg-default);
   
   &.is-image { background-color: transparent; }
+  &.is-placeholder { border-radius: 0; }
 }
 
 .bocc-avatar-img {
@@ -76,7 +74,6 @@
   height: 4px;
   border-radius: 50%;
   box-sizing: content-box;
-  /* Stroke weight from Figma */
   border: 1px solid var(--bocc-avatar-status-border);
 }
 
@@ -102,18 +99,23 @@
   letter-spacing: var(--bocc-avatar-subtitle-letter-spacing);
 }
 
-/* Status variants */
+
 :host(.bocc-status-disponible) .bocc-avatar-status { background-color: var(--bocc-avatar-status-disponible); }
 :host(.bocc-status-ocupado) .bocc-avatar-status { background-color: var(--bocc-avatar-status-ocupado); }
 :host(.bocc-status-no-disponible) .bocc-avatar-status { background-color: var(--bocc-avatar-status-no-disponible); }
 :host(.bocc-status-desconectado) .bocc-avatar-status { background-color: var(--bocc-avatar-status-desconectado); }
 :host(.bocc-status-none) .bocc-avatar-status { display: none; }
 
-/* Fixed size: 32px — border-radius always 46px regardless of mode */
+
 .bocc-avatar-photo {
   width: 32px;
   height: 32px;
-  border-radius: 46px;
+  border-radius: 46px; /* image mode */
+
+  &.is-initials,
+  &.is-none {
+    border-radius: 36px;
+  }
 }
 
 .bocc-avatar-initials { font-size: 14px; }

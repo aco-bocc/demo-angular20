@@ -6,7 +6,7 @@
  * Design reference: Figma "BOC (Dev)" – Section Avatar / User Profile
  *
  * @author  : Cristian Quintana / Contact & Business IT
- * @version : 1.1 – 2026/04/15 (Fixed size 32px — size input removed)
+ * @version : 1.1 – 2026/04/15 
  * ─────────────────────────────────────────────────────────────────
  */
 import { Component, input } from '@angular/core';

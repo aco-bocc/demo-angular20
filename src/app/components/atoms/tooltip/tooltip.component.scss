@@ -1,27 +1,25 @@
 @use '../../../../style/variables/colors.scss';
 
-:host {
-  // ── Design Tokens ──────────────────────────────────────────────────────────
-  --tooltip-bg         : var(--bocc-text-primary);          // #022047 – Navy 900
-  --tooltip-text       : #DFE5F9;                           // $pal-carbon-300
-  --tooltip-radius     : 8px;
-  --tooltip-padding-v  : 12px;
-  --tooltip-padding-h  : 16px;
-  --tooltip-shadow     : 0px 4px 4px rgba(173, 186, 230, 0.4);
-  --tooltip-font-family: 'Poppins', sans-serif;
-  --tooltip-font-size  : 12px;
-  --tooltip-font-weight: 500;                               // Medium
-  --tooltip-line-height: 18px;
-  --tooltip-arrow-edge : 10px;                             // Half of 20px width
-  --tooltip-arrow-base : 8px;                              // Height
+$bg-color: var(--bocc-text-primary);
+$text-color: #DFE5F9;
+$border-radius: 8px;
+$padding-v: 12px;
+$padding-h: 16px;
+$shadow: 0px 4px 4px rgba(173, 186, 230, 0.4);
+$font-family: 'Poppins', sans-serif;
+$font-size: 12px;
+$font-weight: 500;
+$line-height: 18px;
+$arrow-edge: 10px;
+$arrow-base: 8px;
 
-  // ── Host Layout ────────────────────────────────────────────────────────────
-  display       : none;                                     // Hidden by default
-  position      : absolute;                                 // Relative to body
-  z-index       : 9999;                                     // Always on top
+:host {
+  display: none;
+  position: absolute;
+  z-index: 9999;
   pointer-events: none;
-  width         : 240px;                                   // Fixed width as per Figma
-  filter        : drop-shadow(var(--tooltip-shadow));
+  width: 240px;
+  filter: drop-shadow($shadow);
   
   &.is-visible {
     display: flex;
@@ -31,78 +29,74 @@
 }
 
 .tooltip-bubble {
-  background   : var(--tooltip-bg);
-  color        : var(--tooltip-text);
-  border-radius: var(--tooltip-radius);
-  padding      : var(--tooltip-padding-v) var(--tooltip-padding-h);
-  font-family  : var(--tooltip-font-family);
-  font-size    : var(--tooltip-font-size);
-  font-weight  : var(--tooltip-font-weight);
-  line-height  : var(--tooltip-line-height);
-  text-align   : center;
-  word-wrap    : break-word;
-  width        : 100%;
-  box-sizing   : border-box;
+  background: $bg-color;
+  color: $text-color;
+  border-radius: $border-radius;
+  padding: $padding-v $padding-h;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  text-align: center;
+  word-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tooltip-arrow {
-  width       : 0;
-  height      : 0;
+  width: 0;
+  height: 0;
   border-style: solid;
-  flex-shrink : 0;
+  flex-shrink: 0;
 }
 
-// ── Orientations ─────────────────────────────────────────────────────────────
-
-// ── Orientations ─────────────────────────────────────────────────────────────
-
-// [↓ Bottom Variant] Anchor point is at trigger bottom center
 :host(.orientation-bottom) {
-  transform     : translateX(-50%);
+  transform: translateX(-50%);
   flex-direction: column-reverse;
-  animation     : tooltipFadeInBottom 200ms ease-out forwards;
+  animation: tooltipFadeInBottom 200ms ease-out forwards;
 
   .tooltip-arrow {
-    border-width: 0 var(--tooltip-arrow-edge) var(--tooltip-arrow-base) var(--tooltip-arrow-edge);
-    border-color: transparent transparent var(--tooltip-bg) transparent;
+    border-width: 0 $arrow-edge $arrow-base $arrow-edge;
+    border-color: transparent transparent $bg-color transparent;
+    margin-bottom: -1px;
   }
 }
 
-// [↑ Top Variant] Anchor point is at trigger top center
 :host(.orientation-top) {
-  transform     : translate(-50%, -100%);
+  transform: translate(-50%, -100%);
   flex-direction: column;
-  animation     : tooltipFadeInTop 200ms ease-out forwards;
+  animation: tooltipFadeInTop 200ms ease-out forwards;
 
   .tooltip-arrow {
-    border-width: var(--tooltip-arrow-base) var(--tooltip-arrow-edge) 0 var(--tooltip-arrow-edge);
-    border-color: var(--tooltip-bg) transparent transparent transparent;
+    border-width: $arrow-base $arrow-edge 0 $arrow-edge;
+    border-color: $bg-color transparent transparent transparent;
+    margin-top: -1px;
   }
 }
 
-// [→ Right Variant] Anchor point is at trigger right center
 :host(.orientation-right) {
-  transform     : translateY(-50%);
+  transform: translateY(-50%);
   flex-direction: row-reverse;
-  align-items   : center;
-  animation     : tooltipFadeInRight 200ms ease-out forwards;
+  align-items: center;
+  animation: tooltipFadeInRight 200ms ease-out forwards;
 
   .tooltip-arrow {
-    border-width: var(--tooltip-arrow-edge) var(--tooltip-arrow-base) var(--tooltip-arrow-edge) 0;
-    border-color: transparent var(--tooltip-bg) transparent transparent;
+    border-width: $arrow-edge $arrow-base $arrow-edge 0;
+    border-color: transparent $bg-color transparent transparent;
+    margin-right: -1px;
   }
 }
 
-// [← Left Variant] Anchor point is at trigger left center
 :host(.orientation-left) {
-  transform     : translate(-100%, -50%);
+  transform: translate(-100%, -50%);
   flex-direction: row;
-  align-items   : center;
-  animation     : tooltipFadeInLeft 200ms ease-out forwards;
+  align-items: center;
+  animation: tooltipFadeInLeft 200ms ease-out forwards;
 
   .tooltip-arrow {
-    border-width: var(--tooltip-arrow-edge) 0 var(--tooltip-arrow-edge) var(--tooltip-arrow-base);
-    border-color: transparent transparent transparent var(--tooltip-bg);
+    border-width: $arrow-edge 0 $arrow-edge $arrow-base;
+    border-color: transparent transparent transparent $bg-color;
+    margin-left: -1px;
   }
 }
 

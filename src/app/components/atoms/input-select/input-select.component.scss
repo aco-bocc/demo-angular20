@@ -1,9 +1,7 @@
 @use '../../../../style/variables/colors.scss';
 
-// ── Host – tokens de tipografía y espaciado ──────────────────────────────────
 
 :host {
-  // Typography
   --select-font-family  : 'Poppins', sans-serif;
   --select-label-size   : 12px;
   --select-label-weight : 600;
@@ -11,14 +9,13 @@
   --select-text-weight  : 400;
   --select-helper-size  : 11px;
 
-  // Sizing / Spacing
   --select-height       : 48px;
   --select-pad-h        : 20px;
   --select-pad-v        : 12px;
   --select-radius       : 4px;
   --select-border-width : 1.5px;
   --select-option-h     : 40px;
-  --select-max-visible  : 4;        // # of options before scroll kicks in
+  --select-max-visible  : 4;       
   --select-max-height   : calc(var(--select-option-h) * var(--select-max-visible));
 
   display    : block;
@@ -26,38 +23,35 @@
   position   : relative;
 }
 
-// ── Root container ────────────────────────────────────────────────────────────
 
 .bocc-select {
   position: relative;
   width    : 100%;
 
-  // ── State modifiers on the root affect child elements ──────────────────
 
   &--open .bocc-select__chevron {
     transform: translateY(-50%) rotate(180deg);
   }
 
   &--open .bocc-select__trigger {
-    border-color: var(--bocc-border-active);             // #0081FF
+    border-color: var(--bocc-border-active);             
     box-shadow  : 0 0 0 3px rgba(0, 129, 255, 0.15);
   }
 
   &--error .bocc-select__trigger {
-    border-color: var(--bocc-status-error);              // #E24C4C
+    border-color: var(--bocc-status-error);             
     box-shadow  : 0 0 0 3px rgba(226, 76, 76, 0.12);
   }
 
   &--disabled .bocc-select__trigger {
-    background  : var(--bocc-surface-disabled);          // #EFF2FC
-    border-color: var(--bocc-border-disabled);           // #EFF2FC
+    background  : var(--bocc-surface-disabled);        
+    border-color: var(--bocc-border-disabled);          
     cursor      : not-allowed;
     pointer-events: none;
     opacity     : 0.8;
   }
 }
 
-// ── Trigger ───────────────────────────────────────────────────────────────────
 
 .bocc-select__trigger {
   display       : flex;
@@ -70,16 +64,16 @@
   padding       : var(--select-pad-v) 44px var(--select-pad-v) var(--select-pad-h);
   box-sizing    : border-box;
 
-  border        : var(--select-border-width) solid var(--bocc-border-default);  // #DFE5F9
+  border        : var(--select-border-width) solid var(--bocc-border-default); 
   border-radius : var(--select-radius);
-  background    : var(--bocc-surface-input);                                    // #FFFFFF
+  background    : var(--bocc-surface-input);                                   
   cursor        : pointer;
   outline       : none;
 
   transition    : border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 
   &:hover {
-    border-color: var(--bocc-border-hover);              // #ADBAE6
+    border-color: var(--bocc-border-hover);              
   }
 
   &:focus-visible {
@@ -89,13 +83,12 @@
   }
 }
 
-// ── Floating label ────────────────────────────────────────────────────────────
 
 .bocc-select__label {
   font-family : var(--select-font-family);
   font-size   : var(--select-label-size);
   font-weight : var(--select-label-weight);
-  color       : var(--bocc-brand-primary);               // #0081FF – Color de marca activo
+  color       : var(--bocc-brand-primary);            
   line-height : 1.2;
   margin-bottom: 1px;
   pointer-events: none;
@@ -103,11 +96,10 @@
   white-space : nowrap;
 
   &--disabled {
-    color: var(--bocc-text-disabled);                    // #ADBAE6
+    color: var(--bocc-text-disabled);                   
   }
 }
 
-// ── Input ─────────────────────────────────────────────────────────────────────
 
 .bocc-select__input {
   width         : 100%;
@@ -117,7 +109,7 @@
   font-family   : var(--select-font-family);
   font-size     : var(--select-text-size);
   font-weight   : var(--select-text-weight);
-  color         : var(--bocc-text-primary);              // #022047
+  color         : var(--bocc-text-primary);              
   padding       : 0;
   cursor        : pointer;
   pointer-events: none;
@@ -127,26 +119,24 @@
   text-overflow : ellipsis;
   line-height   : 1;
 
-  // Placeholder visual
+
   &--placeholder {
-    color: var(--bocc-text-placeholder);                 // #ADBAE6
+    color: var(--bocc-text-placeholder);                 
   }
 
-  // Disabled state
+
   &--disabled,
   &:disabled {
-    color : var(--bocc-text-disabled);                   // #ADBAE6
+    color : var(--bocc-text-disabled);                  
     cursor: not-allowed;
   }
 
-  // Remove autofill yellow
   &:-webkit-autofill {
     -webkit-box-shadow      : 0 0 0px 1000px var(--bocc-surface-input) inset;
     -webkit-text-fill-color : var(--bocc-text-primary);
   }
 }
 
-// ── Chevron ───────────────────────────────────────────────────────────────────
 
 .bocc-select__chevron {
   position      : absolute;
@@ -155,12 +145,11 @@
   transform     : translateY(-50%);
   display       : flex;
   align-items   : center;
-  color         : var(--bocc-text-support);              // #6D84BF – Texto azulado de soporte
+  color         : var(--bocc-text-support);              
   pointer-events: none;
   transition    : transform 200ms ease;
 }
 
-// ── Dropdown panel ────────────────────────────────────────────────────────────
 
 .bocc-select__dropdown {
   position     : absolute;
@@ -168,14 +157,13 @@
   left         : 0;
   right        : 0;
   z-index      : 200;
-  background   : var(--bocc-surface-input);              // #FFFFFF
+  background   : var(--bocc-surface-input);             
   border       : var(--select-border-width) solid var(--bocc-border-active);
   border-radius: var(--select-radius);
   box-shadow   : var(--bocc-shadow-md);
   overflow     : hidden;
   animation    : boccDropdownIn 140ms ease;
 
-  // Scrollable variant: when options > 4
   &--scrollable .bocc-select__list {
     max-height: var(--select-max-height);
     overflow-y: auto;
@@ -192,15 +180,12 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-// ── Option list ───────────────────────────────────────────────────────────────
-
+s
 .bocc-select__list {
   list-style: none;
   margin    : 0;
   padding   : 4px 0;
 }
-
-// ── Option item ───────────────────────────────────────────────────────────────
 
 .bocc-select__option {
   display    : flex;
@@ -210,33 +195,28 @@
   font-family: var(--select-font-family);
   font-size  : var(--select-text-size);
   font-weight: var(--select-text-weight);
-  color      : var(--bocc-text-primary);                 // #022047
-  cursor     : pointer;
+  color      : var(--bocc-text-primary);           
   outline    : none;
   transition : background 120ms ease, color 120ms ease;
 
   &:hover,
   &:focus-visible {
-    background: var(--bocc-surface-active);              // #E2F1FF
-    color     : var(--bocc-brand-primary);               // #0081FF
+    background: var(--bocc-surface-active);   
+    color     : var(--bocc-brand-primary);            
   }
 
-  // Currently selected option
   &--selected {
     background : var(--bocc-surface-active);
     color      : var(--bocc-brand-primary);
     font-weight: 600;
   }
 
-  // "Selecciona" placeholder item
   &--placeholder {
-    color      : var(--bocc-text-placeholder);           // #ADBAE6
-    font-style : italic;
+    color      : var(--bocc-text-placeholder);           
     font-weight: 400;
   }
 }
 
-// ── Error row ─────────────────────────────────────────────────────────────────
 
 .bocc-select__error-row {
   display    : flex;
@@ -255,6 +235,6 @@
   font-family: var(--select-font-family);
   font-size  : var(--select-helper-size);
   font-weight: 400;
-  color      : var(--bocc-text-secondary);          // #555F83 – Neutral gris support text
+  color      : var(--bocc-text-secondary);          
   line-height: 1.4;
 }

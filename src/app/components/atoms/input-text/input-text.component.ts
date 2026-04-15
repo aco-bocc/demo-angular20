@@ -3,8 +3,6 @@
  * @author Cristian Quintana / Contact & Business IT
  * @version 2.0, 2026/04/13 – Migrated to Angular 20 standalone + signals
  *
- * Figma reference: "14. Campos de texto" – node 13098:49006
- * File: BOC (Dev) – fyaPhgC66xV52OAEiQIXSs
  */
 import {
   Component,

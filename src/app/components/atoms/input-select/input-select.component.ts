@@ -104,7 +104,7 @@ export class InputSelectComponent implements OnInit {
   // ── Constructor: reactive side-effects ────────────────────────────────────
 
   constructor() {
-    // ① React to `returnToDefault` input (replaces ngOnChanges)
+
     effect(() => {
       if (this.returnToDefault()) {
         this.currentlyValueInput.set(this.placeholder());
@@ -112,14 +112,14 @@ export class InputSelectComponent implements OnInit {
       }
     });
 
-    // ② React to coordinator: close this dropdown when another opens
+    //  React to coordinator: close this dropdown when another opens
     const sub = this.coordinator.selectOpen$.subscribe((openId) => {
       if (openId !== this.id) {
         this.showDropdown.set(false);
       }
     });
 
-    // ③ Unsubscribe automatically when component is destroyed
+    //  Unsubscribe automatically when component is destroyed
     this.destroyRef.onDestroy(() => sub.unsubscribe());
   }
 
