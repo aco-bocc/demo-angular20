@@ -1,0 +1,124 @@
+:host {
+  display: contents;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: var(--class-fourth-opacity, rgba(255, 255, 255, 0.72));
+  z-index: 9999;
+
+  &--fullscreen {
+    position: fixed;
+    inset: 0;
+    min-height: 100vh;
+  }
+
+  &:not(.spinner--fullscreen) {
+    position: relative;
+    min-height: 120px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__indicator {
+    --spinner-size: 48px;
+    --segment-width: 4px;
+    --segment-height: 12px;
+    --segment-radius: 999px;
+    --segment-color: #5aa9ff;
+
+    position: relative;
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+  }
+
+  &__indicator--sm {
+    --spinner-size: 28px;
+    --segment-width: 3px;
+    --segment-height: 8px;
+  }
+
+  &__indicator--md {
+    --spinner-size: 40px;
+    --segment-width: 4px;
+    --segment-height: 10px;
+  }
+
+  &__indicator--lg {
+    --spinner-size: 56px;
+    --segment-width: 4px;
+    --segment-height: 14px;
+  }
+
+  &__segment {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--segment-width);
+    height: var(--segment-height);
+    margin-left: calc(var(--segment-width) / -2);
+    margin-top: calc(var(--spinner-size) / -2);
+    border-radius: var(--segment-radius);
+    background: var(--segment-color);
+    transform-origin: center calc(var(--spinner-size) / 2);
+    opacity: 0.2;
+    animation: ui-spinner-fade 0.8s linear infinite;
+  }
+
+  &__segment--1 {
+    transform: rotate(0deg);
+    animation-delay: -0.7s;
+  }
+
+  &__segment--2 {
+    transform: rotate(45deg);
+    animation-delay: -0.6s;
+  }
+
+  &__segment--3 {
+    transform: rotate(90deg);
+    animation-delay: -0.5s;
+  }
+
+  &__segment--4 {
+    transform: rotate(135deg);
+    animation-delay: -0.4s;
+  }
+
+  &__segment--5 {
+    transform: rotate(180deg);
+    animation-delay: -0.3s;
+  }
+
+  &__segment--6 {
+    transform: rotate(225deg);
+    animation-delay: -0.2s;
+  }
+
+  &__segment--7 {
+    transform: rotate(270deg);
+    animation-delay: -0.1s;
+  }
+
+  &__segment--8 {
+    transform: rotate(315deg);
+    animation-delay: 0s;
+  }
+}
+
+@keyframes ui-spinner-fade {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.18;
+  }
+}
