@@ -6,12 +6,12 @@
  * Design reference: Figma "BOC (Dev)" – Section Avatar / User Profile
  *
  * @author  : Cristian Quintana / Contact & Business IT
- * @version : 1.0 – 2026/04/13 (Angular 20 rewrite with signals)
+ * @version : 1.1 – 2026/04/15 (Fixed size 32px — size input removed)
  * ─────────────────────────────────────────────────────────────────
  */
 import { Component, input } from '@angular/core';
 
-export type AvatarSize = '16' | '24' | '32';
+
 export type AvatarImageMode = 'none' | 'placeholder' | 'initials' | 'image';
 export type AvatarStatus = 'none' | 'disponible' | 'ocupado' | 'no-disponible' | 'desconectado';
 
@@ -22,9 +22,6 @@ export type AvatarStatus = 'none' | 'disponible' | 'ocupado' | 'no-disponible' |
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
   host: {
-    '[class.bocc-size-16]': 'size() === "16"',
-    '[class.bocc-size-24]': 'size() === "24"',
-    '[class.bocc-size-32]': 'size() === "32"',
     '[class.bocc-status-none]': 'status() === "none"',
     '[class.bocc-status-disponible]': 'status() === "disponible"',
     '[class.bocc-status-ocupado]': 'status() === "ocupado"',
@@ -33,8 +30,7 @@ export type AvatarStatus = 'none' | 'disponible' | 'ocupado' | 'no-disponible' |
   }
 })
 export class AvatarComponent {
-  // Appearance properties
-  size = input<AvatarSize>('32');
+  // Appearance properties — size is fixed at 32px
   imageMode = input<AvatarImageMode>('image');
   imageUrl = input<string | null>(null);
   initialsText = input<string | null>(null);

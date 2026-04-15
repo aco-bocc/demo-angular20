@@ -48,7 +48,6 @@
   background-color: var(--bocc-avatar-bg-default);
   
   &.is-image { background-color: transparent; }
-  &.is-placeholder { border-radius: 0; }
 }
 
 .bocc-avatar-img {
@@ -110,51 +109,16 @@
 :host(.bocc-status-desconectado) .bocc-avatar-status { background-color: var(--bocc-avatar-status-desconectado); }
 :host(.bocc-status-none) .bocc-avatar-status { display: none; }
 
-/* Size variants */
-:host(.bocc-size-32) {
-  .bocc-avatar-photo {
-    width: 32px;
-    height: 32px;
-    border-radius: 46px; /* For image mode */
-  }
-  .bocc-avatar-photo.is-initials, .bocc-avatar-photo.is-none {
-    border-radius: 36px; /* From Figma analysis */
-  }
-  .bocc-avatar-initials { font-size: 14px; }
-  .bocc-avatar-status {
-    bottom: 2px;
-    right: 2px;
-  }
+/* Fixed size: 32px — border-radius always 46px regardless of mode */
+.bocc-avatar-photo {
+  width: 32px;
+  height: 32px;
+  border-radius: 46px;
 }
 
-:host(.bocc-size-24) {
-  .bocc-avatar-photo {
-    width: 24px;
-    height: 24px;
-    border-radius: 46px;
-  }
-  .bocc-avatar-photo.is-initials, .bocc-avatar-photo.is-none {
-    border-radius: 36px;
-  }
-  .bocc-avatar-initials { font-size: 10px; }
-  .bocc-avatar-status {
-    bottom: 0px; /* Adjusted to fit 24x24 border accurately based on geometry */
-    right: 0px;
-  }
-}
+.bocc-avatar-initials { font-size: 14px; }
 
-:host(.bocc-size-16) {
-  .bocc-avatar-photo {
-    width: 16px;
-    height: 16px;
-    border-radius: 46px;
-  }
-  .bocc-avatar-photo.is-initials, .bocc-avatar-photo.is-none {
-    border-radius: 36px;
-  }
-  .bocc-avatar-initials { font-size: 7px; }
-  .bocc-avatar-status {
-    bottom: -1px;
-    right: -1px;
-  }
+.bocc-avatar-status {
+  bottom: 2px;
+  right: 2px;
 }
