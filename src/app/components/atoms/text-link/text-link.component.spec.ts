@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UiMenuItemComponent } from './menu-item.component';
+import { TextLinkComponent } from './text-link.component';
 
-describe('MenuItemComponent', () => {
-  let component: UiMenuItemComponent;
-  let fixture: ComponentFixture<UiMenuItemComponent>;
+describe('TextLinkComponent', () => {
+  let component: TextLinkComponent;
+  let fixture: ComponentFixture<TextLinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UiMenuItemComponent]
+      imports: [TextLinkComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UiMenuItemComponent);
+    fixture = TestBed.createComponent(TextLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
