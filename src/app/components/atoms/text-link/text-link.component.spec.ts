@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextLinkComponent } from './text-link.component';
+import { UiTextLinkComponent } from './text-link.component';
 
 describe('TextLinkComponent', () => {
-  let component: TextLinkComponent;
-  let fixture: ComponentFixture<TextLinkComponent>;
+  let component: UiTextLinkComponent;
+  let fixture: ComponentFixture<UiTextLinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TextLinkComponent]
+      imports: [UiTextLinkComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TextLinkComponent);
+    fixture = TestBed.createComponent(UiTextLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
