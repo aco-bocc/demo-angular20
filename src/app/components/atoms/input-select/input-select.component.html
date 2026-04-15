@@ -5,7 +5,6 @@
   [class.bocc-select--disabled]="isDisable()"
   [class.bocc-select--active]="isActive()"
 >
-
   <div
     class="bocc-select__trigger"
     role="combobox"
@@ -18,11 +17,7 @@
     (keyup.space)="handleDropdownVisibility()"
   >
     @if (titleName() && isActive()) {
-      <span
-        class="bocc-select__label"
-        [class.bocc-select__label--disabled]="isDisable()"
-        aria-hidden="true"
-      >
+      <span class="bocc-select__label" [class.bocc-select__label--disabled]="isDisable()" aria-hidden="true">
         {{ titleName() }}
       </span>
     }
@@ -40,20 +35,20 @@
 
     <span class="bocc-select__chevron" aria-hidden="true">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"/>
+        <path
+          d="M4 6L8 10L12 6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
     </span>
   </div>
 
   @if (showDropdown()) {
-    <div
-      class="bocc-select__dropdown"
-      [class.bocc-select__dropdown--scrollable]="isScrollable()"
-      role="listbox"
-    >
+    <div class="bocc-select__dropdown" [class.bocc-select__dropdown--scrollable]="isScrollable()" role="listbox">
       <ul class="bocc-select__list">
-
         @if (selectOption()) {
           <li
             class="bocc-select__option bocc-select__option--placeholder"
@@ -80,21 +75,14 @@
             {{ option }}
           </li>
         }
-
       </ul>
     </div>
   }
-
 </div>
 
 @if (hasError() && errorMessage()) {
   <div class="bocc-select__error-row" role="alert" aria-live="polite">
-    <img
-      [src]="icon_Error"
-      alt=""
-      aria-hidden="true"
-      class="bocc-select__error-icon"
-    />
+    <img [src]="icon_Error" alt="" aria-hidden="true" class="bocc-select__error-icon" />
     <span class="bocc-select__error-message">{{ errorMessage() }}</span>
   </div>
 }

@@ -39,6 +39,13 @@ export class App implements OnInit {
     this.simulateDisabled.update(v => !v);
   }
 
+  // Avatar Menu Simulation
+  readonly isMenuExpanded = signal(true);
+
+  toggleMenu() {
+    this.isMenuExpanded.update(v => !v);
+  }
+
   onOptionSelected(event: any) {
     console.log('Option selected in playground:', event);
   }
