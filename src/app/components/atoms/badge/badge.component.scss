@@ -1,6 +1,18 @@
+/**
+ * badge.component.scss
+ * ─────────────────────────────────────────────────────────────────
+ * Styles for the ui-badge atom.
+ * Provides visual variants for semantic states.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+// ── Host container ─────────────────────────────────────────────────────────
+
 :host {
   display: inline-flex;
 }
+
+// ── Base badge styles ──────────────────────────────────────────────────────
 
 .badge {
   display: inline-flex;
@@ -17,15 +29,21 @@
   white-space: nowrap;
   box-sizing: border-box;
 
+  // ── High variant (e.g. critical, error) ──────────────────────────
+
   &--high {
     background-color: #f3e4e7;
     color: #b12a2f;
   }
 
+  // ── Medium variant (e.g. informational) ──────────────────────────
+
   &--medium {
     background-color: #dfeaf7;
     color: #355796;
   }
+
+  // ── Low variant (e.g. success, positive) ─────────────────────────
 
   &--low {
     background-color: #dcefe7;

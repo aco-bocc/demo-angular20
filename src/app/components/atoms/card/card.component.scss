@@ -1,6 +1,19 @@
+/**
+ * card.component.scss
+ * ─────────────────────────────────────────────────────────────────
+ * Styles for the ui-card atom.
+ * Provides a flexible container with configurable spacing,
+ * border radius, and elevation.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+// ── Host container ─────────────────────────────────────────────────────────
+
 :host {
   display: block;
 }
+
+// ── Base card styles ───────────────────────────────────────────────────────
 
 .card {
   display: block;
@@ -10,9 +23,13 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
 
+  // ── Full height modifier ─────────────────────────────────────────
+
   &--full-height {
     height: 100%;
   }
+
+  // ── Padding modifiers ────────────────────────────────────────────
 
   &--padding-none {
     padding: 0;
@@ -29,6 +46,8 @@
   &--padding-lg {
     padding: 24px;
   }
+
+  // ── Border radius modifiers ─────────────────────────────────────
 
   &--radius-sm {
     border-radius: 8px;

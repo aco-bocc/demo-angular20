@@ -1,22 +1,43 @@
+<!--
+  UiInputSelectCalendarComponent – Template
+  ──────────────────────────────────────────────────────────────────
+  Reusable calendar input component.
+  Supports single date and range selection with dropdown behavior.
+  ──────────────────────────────────────────────────────────────────
+-->
+
+<!-- ── Field container ───────────────────────────────────────────── -->
 <div class="calendar-field" #calendarWrapper>
+
+    <!-- Field label -->
     <label class="calendar-field__label">{{ label }}</label>
 
+    <!-- Trigger button to open/close calendar -->
     <button type="button" class="calendar-field__trigger" [disabled]="disabled" (click)="toggleCalendar()">
+        <!-- Display value or placeholder -->
         <span class="calendar-field__value" [class.calendar-field__value--placeholder]="!displayValue">
             {{ displayValue || placeholder }}
         </span>
 
+        <!-- Calendar icon -->
         <span class="calendar-field__icon" aria-hidden="true">📅</span>
     </button>
 
+    <!-- ── Calendar dropdown ───────────────────────────────────────── -->
     @if (isOpen) {
     <div class="calendar" role="dialog" aria-modal="false">
+
+        <!-- Header: navigation + selectors -->
         <div class="calendar__header">
+
+            <!-- Previous month -->
             <button type="button" class="calendar__nav-button" (click)="onPreviousMonth()" aria-label="Mes anterior">
                 ‹
             </button>
 
+            <!-- Month and year selectors -->
             <div class="calendar__selectors">
+
                 <select class="calendar__select" [value]="currentMonth" (change)="onMonthChange($event)">
                     @for (monthName of monthNames; track monthName; let monthIndex = $index) {
                     <option [value]="monthIndex">{{ monthName }}</option>
@@ -28,19 +49,24 @@
                     <option [value]="year">{{ year }}</option>
                     }
                 </select>
+
             </div>
 
+            <!-- Next month -->
             <button type="button" class="calendar__nav-button" (click)="onNextMonth()" aria-label="Mes siguiente">
                 ›
             </button>
+
         </div>
 
+        <!-- Weekday labels -->
         <div class="calendar__weekdays">
             @for (weekDay of weekDays; track weekDay) {
             <span class="calendar__weekday">{{ weekDay }}</span>
             }
         </div>
 
+        <!-- Calendar grid -->
         <div class="calendar__grid">
             @for (day of days; track trackByDay($index, day)) {
             <button type="button" [class]="getDayButtonClass(day)" [disabled]="day.disabled" (click)="onDaySelect(day)"
@@ -50,15 +76,21 @@
             }
         </div>
 
+        <!-- Footer actions -->
         <div class="calendar__footer">
+
+            <!-- Clear selection -->
             <button type="button" class="calendar__action calendar__action--secondary" (click)="clearSelection()">
                 Limpiar
             </button>
 
+            <!-- Close calendar -->
             <button type="button" class="calendar__action calendar__action--primary" (click)="closeCalendar()">
                 Cerrar
             </button>
+
         </div>
+
     </div>
     }
 </div>

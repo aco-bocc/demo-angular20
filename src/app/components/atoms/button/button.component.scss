@@ -1,7 +1,20 @@
+/**
+ * button.component.scss
+ * ─────────────────────────────────────────────────────────────────
+ * Styles for the ui-button atom.
+ * Includes base button structure, visual variants, disabled states,
+ * and icon rendering rules.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+// ── Host container ─────────────────────────────────────────────────────────
+
 :host {
   display: inline-block;
   width: 100%;
 }
+
+// ── Base button structure ──────────────────────────────────────────────────
 
 button {
   display: inline-flex;
@@ -30,7 +43,8 @@ button {
   }
 }
 
-// Primary
+// ── Primary variant ────────────────────────────────────────────────────────
+
 .btn-primary {
   background: var(--bocc-brand-primary);
   color: white;
@@ -42,7 +56,8 @@ button {
   }
 }
 
-// Secondary
+// ── Secondary variant ──────────────────────────────────────────────────────
+
 .btn-secondary {
   background: white;
   color: var(--bocc-brand-primary);
@@ -53,7 +68,8 @@ button {
   }
 }
 
-// Disabled variants
+// ── Disabled variants ──────────────────────────────────────────────────────
+
 .btn-inactive-primary,
 .btn-inactive {
   background: #e5e7eb;
@@ -61,7 +77,8 @@ button {
   box-shadow: none;
 }
 
-// Icon
+// ── Icon element ───────────────────────────────────────────────────────────
+
 .btn-icon {
   width: 20px;
   height: 20px;

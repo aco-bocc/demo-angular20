@@ -1,7 +1,19 @@
+/**
+ * menu-item.component.scss
+ * ─────────────────────────────────────────────────────────────────
+ * Styles for the ui-menu-item atom.
+ * Provides layout, interaction states, and visual structure.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+// ── Host container ─────────────────────────────────────────────────────────
+
 :host {
     display: block;
     width: 100%;
 }
+
+// ── Base menu item styles ─────────────────────────────────────────────────
 
 .menu-item {
     display: flex;
@@ -23,32 +35,40 @@
         box-shadow 0.2s ease,
         opacity 0.2s ease;
 
+    // Hover state
     &:hover:not(:disabled) {
         background: #f8f9fb;
     }
 
+    // Focus state for accessibility
     &:focus-visible {
         outline: 2px solid rgba(0, 129, 255, 0.2);
         outline-offset: 1px;
     }
 
+    // Disabled state
     &:disabled {
         cursor: not-allowed;
     }
 
+    // Active modifier
     &--active {
         background: transparent;
     }
 
+    // Selected modifier
     &--selected {
         background: transparent;
         box-shadow: none;
     }
 
+    // Disabled modifier
     &--disabled {
         opacity: 0.55;
         pointer-events: none;
     }
+
+    // ── Left section ───────────────────────────────────────────────
 
     &__left {
         display: flex;
@@ -58,6 +78,7 @@
         flex: 1;
     }
 
+    // Text container
     &__text {
         display: flex;
         flex-direction: column;
@@ -65,6 +86,7 @@
         min-width: 0;
     }
 
+    // Main label
     &__label {
         color: #3f3f46;
         font-family: inherit;
@@ -76,6 +98,7 @@
         text-overflow: ellipsis;
     }
 
+    // Subtitle
     &__subtitle {
         color: #71717a;
         font-family: inherit;
@@ -87,12 +110,16 @@
         text-overflow: ellipsis;
     }
 
+    // ── Right section ──────────────────────────────────────────────
+
     &__right {
         display: flex;
         align-items: center;
         gap: 10px;
         flex-shrink: 0;
     }
+
+    // ── Icons ──────────────────────────────────────────────────────
 
     &__icon {
         display: inline-block;
@@ -111,6 +138,8 @@
             height: 16px;
         }
     }
+
+    // ── Badge ──────────────────────────────────────────────────────
 
     &__badge {
         display: inline-flex;

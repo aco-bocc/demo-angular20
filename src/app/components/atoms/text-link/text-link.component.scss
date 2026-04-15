@@ -1,6 +1,18 @@
+/**
+ * text-link.component.scss
+ * ─────────────────────────────────────────────────────────────────
+ * Styles for the ui-text-link atom.
+ * Provides text-based interaction styles with semantic variants.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+// ── Host container ─────────────────────────────────────────────────────────
+
 :host {
   display: inline-flex;
 }
+
+// ── Base text link styles ─────────────────────────────────────────────────
 
 .text-link {
   background: none;
@@ -19,14 +31,18 @@
     color 0.2s ease,
     opacity 0.2s ease;
 
+  // Hover state
   &:hover:not(.text-link--disabled) {
     text-decoration: underline;
   }
 
+  // Focus state for accessibility
   &:focus-visible {
     outline: 2px solid rgba(0, 129, 255, 0.2);
     outline-offset: 2px;
   }
+
+  // ── Variants ─────────────────────────────────────────────────────
 
   &--primary {
     color: var(--bocc-brand-primary, #0081ff);
@@ -39,6 +55,8 @@
   &--danger {
     color: #b12a2f;
   }
+
+  // ── Disabled state ───────────────────────────────────────────────
 
   &--disabled {
     opacity: 0.5;
