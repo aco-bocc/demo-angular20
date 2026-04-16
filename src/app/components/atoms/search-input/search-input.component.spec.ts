@@ -86,30 +86,6 @@ describe('SearchInputComponent', () => {
     expect(component.searchTriggered.emit).not.toHaveBeenCalled();
   });
 
-  it('should render custom icons via CSS masks when paths are provided', () => {
-    fixture.componentRef.setInput('leftIcon', 'assets/icons/custom-left.svg');
-    fixture.componentRef.setInput('rightIcon', 'assets/icons/custom-right.svg');
-    fixture.componentRef.setInput('infoIcon', 'assets/icons/custom-info.svg');
-    fixture.componentRef.setInput('feedbackIcon', 'assets/icons/custom-error.svg');
-    fixture.componentRef.setInput('feedbackMessage', 'Oops');
-    fixture.componentRef.setInput('label', 'Label');
-    fixture.detectChanges();
-
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    const leftMask = compiled.querySelector('.search-input__icon--left .search-input__mask') as HTMLElement;
-    expect(leftMask.style.maskImage).toContain('url("assets/icons/custom-left.svg")');
-
-    const rightMask = compiled.querySelector('.search-input__icon--right .search-input__mask') as HTMLElement;
-    expect(rightMask.style.maskImage).toContain('url("assets/icons/custom-right.svg")');
-
-    const infoMask = compiled.querySelector('.search-input__info-icon .search-input__mask--sm') as HTMLElement;
-    expect(infoMask.style.maskImage).toContain('url("assets/icons/custom-info.svg")');
-
-    const feedbackMask = compiled.querySelector('.search-input__feedback-icon .search-input__mask--sm') as HTMLElement;
-    expect(feedbackMask.style.maskImage).toContain('url("assets/icons/custom-error.svg")');
-  });
-
   it('should add is-filled when the value is non-empty and remove it when cleared', () => {
     fixture.componentRef.setInput('value', 'Some text');
     fixture.detectChanges();

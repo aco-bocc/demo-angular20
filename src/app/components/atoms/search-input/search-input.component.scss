@@ -3,43 +3,44 @@
 
 // All custom properties are scoped to :host to avoid conflicts with global tokens.
 // --si- prefix stands for "search input".
+
+// Search Input Tokens
+$si-font:          'Poppins', sans-serif;
+$si-label-size:    0.75rem;    // 12px
+$si-label-weight:  600;
+$si-label-spacing: 0.056rem;   // 0.9px
+$si-hint-size:     0.6875rem;  // 11px
+$si-hint-spacing:  0.044rem;   // 0.7px
+$si-input-size:    0.875rem;   // 14px
+$si-input-weight:  500;
+$si-input-spacing: 0.044rem;   // 0.7px
+$si-feedback-size: 0.6875rem;  // 11px
+
+// Structural tokens
+$si-box-height:   2.5rem;      // 40px
+$si-box-radius:   0.25rem;     // 4px
+$si-box-pad-h:    0.5rem;      // 8px
+$si-border-width: 0.0625rem;   // 1px
+$si-icon-size:    1.5rem;      // 24px
+$si-icon-sm:      1rem;        // 16px
+$si-divider-h:    1.5rem;      // 24px
+
+// Color mapping from global design tokens
+$si-border-default: var(--bocc-border-hover);          // #ADBAE6
+$si-border-focus:   var(--bocc-border-active);         // #0081FF
+$si-border-hfocus:  var(--bocc-brand-primary-hover);   // #0056CB
+$si-bg:             var(--bocc-surface-main);          // #FFFFFF
+$si-bg-disabled:    var(--bocc-surface-disabled);      // #EFF2FC
+$si-text-label:     var(--bocc-text-bold);             // #4E556C
+$si-text-hint:      var(--bocc-text-placeholder);      // #ADBAE6
+$si-text-input:     var(--bocc-text-primary);          // #022047
+$si-text-ph:        var(--bocc-text-placeholder);      // #ADBAE6
+$si-icon-color:     var(--bocc-text-secondary);        // #555F83
+$si-icon-active:    var(--bocc-brand-primary);         // #0081FF
+
 :host {
-  // Typography tokens
-  --si-font          : 'Poppins', sans-serif;
-  --si-label-size    : 0.75rem;    // 12px
-  --si-label-weight  : 600;
-  --si-label-spacing : 0.056rem;   // 0.9px
-  --si-hint-size     : 0.6875rem;  // 11px
-  --si-hint-spacing  : 0.044rem;   // 0.7px
-  --si-input-size    : 0.875rem;   // 14px
-  --si-input-weight  : 500;
-  --si-input-spacing : 0.044rem;   // 0.7px
-  --si-feedback-size : 0.6875rem;  // 11px
-
-  // Structural tokens
-  --si-box-height   : 2.5rem;      // 40px
-  --si-box-radius   : 0.25rem;     // 4px
-  --si-box-pad-h    : 0.5rem;      // 8px
-  --si-border-width : 0.0625rem;   // 1px
-  --si-icon-size    : 1.5rem;      // 24px
-  --si-icon-sm      : 1rem;        // 16px
-  --si-divider-h    : 1.5rem;      // 24px
-
-  // Color mapping from global design tokens
-  --si-border-default : var(--bocc-border-hover);          // #ADBAE6
-  --si-border-focus   : var(--bocc-border-active);         // #0081FF
-  --si-border-hfocus  : var(--bocc-brand-primary-hover);   // #0056CB
-  --si-bg             : var(--bocc-surface-main);          // #FFFFFF
-  --si-bg-disabled    : var(--bocc-surface-disabled);      // #EFF2FC
-  --si-text-label     : var(--bocc-text-bold);             // #4E556C
-  --si-text-hint      : var(--bocc-text-placeholder);      // #ADBAE6
-  --si-text-input     : var(--bocc-text-primary);          // #022047
-  --si-text-ph        : var(--bocc-text-placeholder);      // #ADBAE6
-  --si-icon-color     : var(--bocc-text-secondary);        // #555F83
-  --si-icon-active    : var(--bocc-brand-primary);         // #0081FF
-
-  display     : block;
-  font-family : var(--si-font);
+  display:     block;
+  font-family: $si-font;
 }
 
 // Root block: vertical stack that holds all parts of the component
@@ -67,10 +68,10 @@
 }
 
 .search-input__label {
-  font-size      : var(--si-label-size);
-  font-weight    : var(--si-label-weight);
-  letter-spacing : var(--si-label-spacing);
-  color          : var(--si-text-label);
+  font-size:      $si-label-size;
+  font-weight:    $si-label-weight;
+  letter-spacing: $si-label-spacing;
+  color:          $si-text-label;
   line-height    : 1.4;
   cursor         : pointer; // clicking the label focuses the input via [for]
 }
@@ -79,20 +80,19 @@
 .search-input__info-icon {
   display     : flex;
   align-items : center;
-  color       : var(--si-icon-active);
-  cursor      : help;
+  color:       $si-icon-active;
 
   svg, .search-input__mask--sm {
-    width  : var(--si-icon-sm);
-    height : var(--si-icon-sm);
+    width:  $si-icon-sm;
+    height: $si-icon-sm;
   }
 }
 
 .search-input__hint {
-  font-size      : var(--si-hint-size);
-  font-weight    : 400;
-  letter-spacing : var(--si-hint-spacing);
-  color          : var(--si-text-hint);
+  font-size:      $si-hint-size;
+  font-weight:    400;
+  letter-spacing: $si-hint-spacing;
+  color:          $si-text-hint;
   line-height    : 1.4;
 }
 
@@ -101,28 +101,28 @@
 .search-input__box {
   display       : flex;
   align-items   : center;
-  height        : var(--si-box-height);
-  background    : var(--si-bg);
-  border        : var(--si-border-width) solid var(--si-border-default);
-  border-radius : var(--si-box-radius);
-  padding       : 0 var(--si-box-pad-h);
+  height:        $si-box-height;
+  background:    $si-bg;
+  border:        $si-border-width $si-border-default;
+  border-radius: $si-box-radius;
+  padding:       0 $si-box-pad-h;
   gap           : 0.375rem; // 6px
   box-sizing    : border-box;
   transition    : border-color 150ms ease, box-shadow 150ms ease;
 
   // User is typing inside the field
   &:focus-within {
-    border-color : var(--si-border-focus);
-    box-shadow   : 0 0 0 0.1875rem rgba(0, 129, 255, 0.15); // 3px ring
+    border-color: $si-border-focus;
+    box-shadow:   0 0 0 0.1875rem rgba(0, 129, 255, 0.15); // 3px ring
 
     &:hover {
-      border-color : var(--si-border-hfocus);
+      border-color: $si-border-hfocus;
     }
   }
 
   // Mouse is over the box but the field is not focused
   &:hover:not(:focus-within) {
-    border-color : var(--si-border-hfocus);
+    border-color: $si-border-hfocus;
   }
 }
 
@@ -133,17 +133,17 @@
   border         : none;
   outline        : none;
   background     : transparent;
-  font-family    : var(--si-font);
-  font-size      : var(--si-input-size);
-  font-weight    : var(--si-input-weight);
-  letter-spacing : var(--si-input-spacing);
-  color          : var(--si-text-input);
+  font-family:    $si-font;
+  font-size:      $si-input-size;
+  font-weight:    $si-input-weight;
+  letter-spacing: $si-input-spacing;
+  color:          $si-text-input;
   height         : 100%;
   min-width      : 0;          // prevents the field from overflowing a narrow flex container
 
   &::placeholder {
-    color       : var(--si-text-ph);
-    font-weight : 400;
+    color:       $si-text-ph;
+    font-weight: 400;
   }
 
   &:disabled {
@@ -159,11 +159,11 @@
   align-items     : center;
   justify-content : center;
   flex-shrink     : 0; // fixed size, does not shrink with the flex container
-  color           : var(--si-icon-color);
+  color:           $si-icon-color;
 
   svg, .search-input__mask {
-    width  : var(--si-icon-size);
-    height : var(--si-icon-size);
+    width:  $si-icon-size;
+    height: $si-icon-size;
   }
 
   // Left icon is visual only, the user cannot click it
@@ -180,7 +180,7 @@
     transition : color 120ms ease, transform 100ms ease;
 
     &:hover:not(:disabled) {
-      color : var(--si-icon-active);
+      color: $si-icon-active;
     }
 
     &:active:not(:disabled) {
@@ -216,16 +216,16 @@
 }
 
 .search-input__prefix-text {
-  font-size   : var(--si-input-size);
-  font-weight : var(--si-input-weight);
-  color       : var(--si-text-label);
-  white-space : nowrap;
+  font-size:   $si-input-size;
+  font-weight: $si-input-weight;
+  color:       $si-text-label;
+  white-space: nowrap;
 }
 
 .search-input__divider {
-  width      : 0.0625rem; // 1px
-  height     : var(--si-divider-h);
-  background : var(--bocc-border-subtle);
+  width:      0.0625rem; // 1px
+  height:     $si-divider-h;
+  background: var(--bocc-border-subtle);
 }
 
 // Status modifiers: change border and feedback color based on validation result
@@ -234,10 +234,10 @@
 
   // When the field has text, keep a neutral border even while the user is typing
   &.is-filled .search-input__box {
-    border-color : var(--si-border-default);
+    border-color: $si-border-default;
 
     &:focus-within { box-shadow: none; }
-    &:hover { border-color: var(--si-border-hfocus); }
+    &:hover { border-color: $si-border-hfocus; }
   }
 
   &.status-success {
@@ -272,9 +272,9 @@
     pointer-events : none;
 
     .search-input__box {
-      background   : var(--si-bg-disabled);
-      border-color : var(--si-border-default);
-      opacity      : 0.8;
+      background:   $si-bg-disabled;
+      border-color: $si-border-default;
+      opacity:      0.8;
     }
 
     .search-input__label,
@@ -296,14 +296,14 @@
 
 .search-input__feedback-icon {
   svg, .search-input__mask--sm {
-    width   : var(--si-icon-sm);
-    height  : var(--si-icon-sm);
-    display : block;
+    width:   $si-icon-sm;
+    height:  $si-icon-sm;
+    display: block;
   }
 }
 
 .search-input__feedback-text {
-  font-size   : var(--si-feedback-size);
-  font-weight : 400;
-  line-height : 1.4;
+  font-size:   $si-feedback-size;
+  font-weight: 400;
+  line-height: 1.4;
 }
