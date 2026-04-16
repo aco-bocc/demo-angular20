@@ -5,10 +5,9 @@
  * one of four orientations (top, bottom, left, right).
  * Controlled externally by binding the isVisible input 
  * from a parent component.
- * Design reference: Figma "BOC (Dev)" – Section Tooltip
  *
  * @author  : Cristian Quintana / Contact & Business IT
- * @version : 1.0 – 2026/04/13 (Angular 20 rewrite with signals)
+ * @version : 1.0 – 2026/04/13 
  * ─────────────────────────────────────────────────────────────────
  */
 import { Component, input, signal, ChangeDetectionStrategy } from '@angular/core';
