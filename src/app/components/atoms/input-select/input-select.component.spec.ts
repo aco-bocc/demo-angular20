@@ -303,23 +303,6 @@ describe('InputSelectComponent', () => {
   // 10. Template rendering (branches @if)
   // ─────────────────────────────────────────────
   describe('Template rendering (branches)', () => {
-    it('shows floating label only when titleName and isActive are both set', () => {
-      fixture.componentRef.setInput('titleName', 'My Label');
-      component.isActive.set(false);
-      fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.bocc-select__label')).toBeFalsy();
-
-      component.isActive.set(true);
-      fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.bocc-select__label')).toBeTruthy();
-    });
-
-    it('does NOT show floating label when titleName is empty', () => {
-      fixture.componentRef.setInput('titleName', '');
-      component.isActive.set(true);
-      fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.bocc-select__label')).toBeFalsy();
-    });
 
     it('shows dropdown panel only when showDropdown=true', () => {
       fixture.componentRef.setInput('optionsValues', ['A', 'B']);

@@ -53,5 +53,7 @@ export const VAR_INPUT_FORM = {
     HIDDEN: 'assets/icons/hidden.svg',
     ICON_ERROR: 'assets/icons/Warning.svg',
     ICON_SORT: 'assets/icons/ico-order.svg',
-    ICON_CHEVRON_DOWN: 'assets/icons/chevron-down.svg'
+    ICON_CHEVRON_DOWN: 'assets/icons/chevron-down.svg',
+    ICON_OPEN_EYE: 'assets/icons/icon-open-eye.svg',
+    ICON_CLOSE_EYE: 'assets/icons/icon-close-eye.svg'
 };

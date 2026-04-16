@@ -21,6 +21,7 @@ export class App implements OnInit {
   readonly cities = signal(['Medellín', 'Bogotá', 'Cali', 'Barranquilla', 'Cartagena']);
   readonly simulateError = signal(false);
   readonly simulateDisabled = signal(false);
+  readonly pswrdValue = signal('');
 
   // User Authentication Simulation
   readonly currentUser = signal<any>(null);

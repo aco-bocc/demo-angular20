@@ -1,69 +1,78 @@
 @use '../../../../style/variables/colors.scss';
 
-:host {
-  --input-font-family  : 'Poppins', sans-serif;
-  --input-label-size   : 12px;
-  --input-label-weight : 600;
-  --input-text-size    : 14px;
-  --input-text-weight  : 500;
-  --input-helper-size  : 11px;
-  --input-height       : 48px;
-  --input-pad-h        : 20px;
-  --input-pad-v        : 12px;
-  --input-gap          : 6px;
-  --input-error-gap    : 4px;
-  --input-radius       : 4px;
-  --input-border-width : 1.5px;
-  --tooltip-radius     : 6px;
+$input-font-family: 'Poppins', sans-serif;
+$input-label-size: 0.75rem;
+$input-label-weight: 600;
+// Aplicamos el letter-spacing del input-select
+$input-label-spacing: 0.056rem;
+$input-text-size: 0.875rem;
+$input-text-weight: 500;
+$input-text-spacing: 0.044rem;
+$input-helper-size: 0.6875rem;
+$input-helper-spacing: 0.044rem;
 
-  display    : block;
-  font-family: var(--input-font-family);
+// Medidas alineadas con input-select (2.5rem = 40px)
+$input-height: 2.5rem;
+$input-radius: 0.25rem;
+$input-pad-h: 0.5rem;
+$input-pad-v: 0.5rem;
+$input-gap: 0.375rem;
+$input-error-gap: 0.25rem;
+$input-border-width: 0.0625rem;
+$input-icon-size: 1.5rem;
+
+$tooltip-radius: 0.375rem;
+
+:host {
+  display: block;
+  font-family: $input-font-family;
 }
 
 .input-form {
-  display       : flex;
+  display: flex;
   flex-direction: column;
-  gap           : var(--input-gap);
-  width         : 100%;
+  gap: $input-gap;
+  width: 100%;
 }
 
 // ── Label row ────────────────────────────────────────────────────────────────
 
 .label-row {
-  display    : flex;
+  display: flex;
   align-items: center;
-  gap        : 4px;
-  position   : relative;
-  max-width  : 100%;
-  overflow   : hidden;
+  gap: 0.25rem;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .input-label {
-  font-family  : var(--input-font-family);
-  font-size    : var(--input-label-size);
-  font-weight  : var(--input-label-weight);
-  color        : var(--bocc-text-bold);             
-  line-height  : 1.4;
-  white-space  : nowrap;
-  overflow     : hidden;
+  font-family: $input-font-family;
+  font-size: $input-label-size;
+  font-weight: $input-label-weight;
+  letter-spacing: $input-label-spacing;
+  color: var(--bocc-text-bold);             
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  cursor       : default;
+  cursor: default;
 }
 
 .tooltip-trigger {
-  display        : inline-flex;
-  align-items    : center;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  background     : none;
-  border         : none;
-  padding        : 0;
-  cursor         : pointer;
-  flex-shrink    : 0;
-  position       : relative;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
 
   img {
-    display   : block;
-    opacity   : 0.65;
+    display: block;
+    opacity: 0.65;
     transition: opacity 150ms ease;
   }
 
@@ -73,46 +82,46 @@
   }
 
   &:focus-visible {
-    outline       : 2px solid var(--bocc-border-active);  
-    outline-offset: 2px;
-    border-radius : 4px;
+    outline: 0.125rem solid var(--bocc-border-active);  
+    outline-offset: 0.125rem;
+    border-radius: 0.25rem;
   }
 }
 
 .tooltip-balloon {
-  position      : absolute;
-  bottom        : calc(100% + 8px);
-  left          : 50%;
-  transform     : translateX(-50%);
-  z-index       : 100;
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
 
-  background    : var(--bocc-text-primary);          
-  color         : var(--bocc-text-on-brand);         
-  border-radius : var(--tooltip-radius);
-  font-family   : var(--input-font-family);
-  font-size     : 11px;
-  font-weight   : 400;
-  line-height   : 1.4;
-  padding       : 8px 10px;
-  white-space   : nowrap;
-  max-width     : 240px;
-  box-shadow    : var(--bocc-shadow-md);             
+  background: var(--bocc-text-primary);          
+  color: var(--bocc-text-on-brand);         
+  border-radius: $tooltip-radius;
+  font-family: $input-font-family;
+  font-size: 0.6875rem; // 11px
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 0.5rem 0.625rem;
+  white-space: nowrap;
+  max-width: 15rem; // ~240px
+  box-shadow: var(--bocc-shadow-md);             
   pointer-events: none;
 
   &::after {
-    content         : '';
-    position        : absolute;
-    top             : 100%;
-    left            : 50%;
-    transform       : translateX(-50%);
-    border          : 5px solid transparent;
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0.3125rem solid transparent; // 5px
     border-top-color: var(--bocc-text-primary);      
   }
 
   animation: tooltipIn 120ms ease forwards;
 
   @keyframes tooltipIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    from { opacity: 0; transform: translateX(-50%) translateY(0.25rem); }
     to   { opacity: 1; transform: translateX(-50%) translateY(0);   }
   }
 }
@@ -122,89 +131,90 @@
 }
 
 .input-container {
-  display      : flex;
-  align-items  : center;
-  height       : var(--input-height);
-  border       : var(--input-border-width) solid var(--bocc-border-default);  
-  border-radius: var(--input-radius);
-  background   : var(--bocc-surface-input);                                  
-  padding      : var(--input-pad-v) var(--input-pad-h);
-  box-sizing   : border-box;
-  transition   : border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  display: flex;
+  align-items: center;
+  height: $input-height;
+  border: $input-border-width solid var(--bocc-border-default);  
+  border-radius: $input-radius;
+  background: var(--bocc-surface-input);                                  
+  padding: $input-pad-v $input-pad-h;
+  box-sizing: border-box;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 
-  &:hover:not(.is-disabled):not(.is-error):not(.is-focused) {
+  &:hover:not(.is-disabled):not(.is-error):not(.is-focused):not(.is-success):not(.is-warning) {
     border-color: var(--bocc-border-hover);          
   }
-
  
   &.is-focused {
     border-color: var(--bocc-border-active);        
-    box-shadow  : 0 0 0 3px rgba(0, 129, 255, 0.15);
-    outline     : none;
+    box-shadow: 0 0 0 0.1875rem rgba(0, 129, 255, 0.15);
+    outline: none;
   }
 
-  // Error – estado de validación fallido
+  // Error – alineado al formato de input-select
   &.is-error {
     border-color: var(--bocc-status-error);       
-    box-shadow  : 0 0 0 3px rgba(226, 76, 76, 0.12);
+    box-shadow: 0 0 0 0.1875rem rgba(226, 76, 76, 0.12);
   }
 
-  // Success – estado de validación exitoso
+  // Success 
   &.is-success {
     border-color: var(--bocc-status-success);    
-    box-shadow  : 0 0 0 3px rgba(0, 202, 130, 0.15);
+    box-shadow: 0 0 0 0.1875rem rgba(0, 202, 130, 0.15);
   }
 
-  // Warning – estado de advertencia
+  // Warning 
   &.is-warning {
     border-color: var(--bocc-status-warning);        
-    box-shadow  : 0 0 0 3px rgba(255, 170, 49, 0.15);
+    box-shadow: 0 0 0 0.1875rem rgba(255, 170, 49, 0.15);
   }
 
-  // Disabled – campo deshabilitado
+  // Disabled 
   &.is-disabled {
-    background  : var(--bocc-surface-disabled);      
+    background: var(--bocc-surface-disabled);      
     border-color: var(--bocc-border-disabled);      
-    cursor      : not-allowed;
-    opacity     : 0.8;
+    cursor: not-allowed;
+    opacity: 0.8;
   }
 
-  // Filled – el campo tiene valor escrito
+  // Filled - opcional si hay que cambiar color al llenarlo
   &.is-filled .input-text {
     color: var(--bocc-text-primary);                 
   }
 }
 
 .input-text {
-  width      : 100%;
-  border     : none;
-  outline    : none;
-  background : transparent;
-  font-family: var(--input-font-family);
-  font-size  : var(--input-text-size);
-  font-weight: var(--input-text-weight);
-  color      : var(--bocc-text-primary);             
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: $input-font-family;
+  font-size: $input-text-size;
+  font-weight: $input-text-weight;
+  letter-spacing: $input-text-spacing;
+  color: var(--bocc-text-primary);             
   line-height: 1;
-  cursor     : text;
+  cursor: text;
 
   // Placeholder
   &::placeholder {
-    color      : var(--bocc-text-placeholder);       
+    color: var(--bocc-text-placeholder);       
     font-weight: 400;
   }
 
   // Disabled
   &:disabled {
-    color : var(--bocc-text-disabled);               
+    color: var(--bocc-text-disabled);               
     cursor: not-allowed;
   }
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    -webkit-box-shadow      : 0 0 0px 1000px var(--bocc-surface-input) inset;
-    -webkit-text-fill-color : var(--bocc-text-primary);
-    transition              : background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px var(--bocc-surface-input) inset;
+    -webkit-text-fill-color: var(--bocc-text-primary);
+    transition: background-color 5000s ease-in-out 0s;
   }
 
   &[type='number'] {
@@ -217,22 +227,55 @@
   }
 }
 
-
 .error-row {
-  display    : flex;
+  display: flex;
   align-items: center;
-  gap        : var(--input-error-gap);
-  margin-top : 2px;
+  gap: $input-error-gap;
+  margin-top: 0.125rem; // 2px
 }
 
 .error-icon {
   flex-shrink: 0;
+  width: 0.875rem; 
+  height: 0.875rem;
 }
 
 .error-message {
-  font-family: var(--input-font-family);
-  font-size  : var(--input-helper-size);
+  font-family: $input-font-family;
+  font-size: $input-helper-size;
   font-weight: 400;
-  color      : var(--bocc-text-secondary);          
+  letter-spacing: $input-helper-spacing;
+  color: var(--bocc-text-secondary);          
   line-height: 1.4;
+}
+
+.pswrd-toggle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 0.5rem; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  outline: none;
+
+  img {
+    width: $input-icon-size;
+    height: $input-icon-size;
+    opacity: 0.65;
+    transition: opacity 150ms ease;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 0.125rem solid var(--bocc-border-active);
+    outline-offset: 0.125rem;
+    border-radius: 0.25rem;
+  }
 }

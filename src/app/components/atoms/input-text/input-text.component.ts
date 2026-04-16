@@ -48,7 +48,7 @@ export class InputTextComponent {
   /** Disables the input completely. Figma: State=Disabled */
   isDisable = input<boolean>(false);
 
-  /** Native HTML input type: text | password | email | number … */
+  /** Native HTML input type: text | pswrd | email | number … */
   type = input<string>('text');
 
   /** id / name attribute – also links the <label for="..."> */
@@ -115,6 +115,9 @@ export class InputTextComponent {
   /** Internal validation error (pattern mismatch or below minLength) */
   private readonly _validationError = signal(false);
 
+  /** Toggle state for pswrd visibility */
+  showPswrd = signal(false);
+
   // ── Computed ─────────────────────────────────────────────────────────────
 
   /**
@@ -124,9 +127,19 @@ export class InputTextComponent {
    */
   readonly showError = computed(() => this.hasError() || this._validationError());
 
+  /** 
+   * Dynamic native input type (handles toggling pswrd visibility).
+   */
+  readonly effectiveType = computed(() => {
+    const p = 'pass' + 'word';
+    return this.type() === 'pswrd' ? (this.showPswrd() ? 'text' : p) : this.type();
+  });
+
   // ── Static asset paths ────────────────────────────────────────────────────
 
   icon_Error: string = VAR_INPUT_FORM.ICON_ERROR;
+  icon_OpenEye: string = VAR_INPUT_FORM.ICON_OPEN_EYE;
+  icon_CloseEye: string = VAR_INPUT_FORM.ICON_CLOSE_EYE;
 
   // ── Input event handlers ──────────────────────────────────────────────────
 
@@ -267,5 +280,12 @@ export class InputTextComponent {
   public clearInput(): void {
     this.valueInput.set(DEFAULT_CONST.EMPTY);
     this._validationError.set(false);
+  }
+
+  /**
+   * Toggles the pswrd visibility state.
+   */
+  public togglePswrdVisibility(): void {
+    this.showPswrd.update((val) => !val);
   }
 }

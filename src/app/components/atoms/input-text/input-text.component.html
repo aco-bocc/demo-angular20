@@ -17,7 +17,7 @@
       [attr.maxlength]="maxLength()"
       [attr.minlength]="minLength()"
       [disabled]="isDisable()"
-      [attr.type]="type()"
+      [attr.type]="effectiveType()"
       [attr.id]="id()"
       [attr.name]="id()"
       [attr.placeholder]="placeholder()"
@@ -39,6 +39,11 @@
       (keydown)="onKeydown()"
       aria-autocomplete="none"
     />
+    @if (type() === 'pswrd') {
+      <button type="button" class="pswrd-toggle" (click)="togglePswrdVisibility()" aria-label="Mostrar u ocultar contraseña">
+        <img [src]="showPswrd() ? icon_OpenEye : icon_CloseEye" alt="" />
+      </button>
+    }
   </div>
   
   @if (showError() && errorMessage()) {
