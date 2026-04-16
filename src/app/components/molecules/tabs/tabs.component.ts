@@ -7,12 +7,7 @@
  * <bocc-tabs [tabs]="tabItems" [activeTabId]="'tab1'" (tabChange)="onTabChange($event)"></bocc-tabs>
  */
 import { Component, input, output } from '@angular/core';
-
-export interface TabItem {
-  id: string | number;
-  label: string;
-  icon?: string;
-}
+import { TabItem } from '../../../interfaces/TabItem';
 
 import { MasterIconComponent } from '../../atoms/master-icon/master-icon.component';
 

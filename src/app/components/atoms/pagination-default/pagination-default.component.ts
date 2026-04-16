@@ -7,13 +7,7 @@
  * <bocc-pagination-default [currentPage]="1" [totalPages]="15" (pageChange)="onPageChange($event)"></bocc-pagination-default>
  */
 import { Component, computed, input, output, signal, HostListener, ElementRef } from '@angular/core';
-
-interface PageItem {
-  type: 'number' | 'ellipsis';
-  value?: number;
-  hiddenPages?: number[];
-  isEnd?: boolean;
-}
+import { PageItem } from '../../../interfaces/PageItem';
 
 @Component({
   selector: 'bocc-pagination-default',
