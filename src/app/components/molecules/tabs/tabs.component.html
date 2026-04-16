@@ -5,7 +5,8 @@
       [attr.aria-selected]="tab.id === activeTabId()" [attr.aria-controls]="'tab-panel-' + tab.id" tabindex="0"
       (keydown.enter)="onTabClick(tab.id)" (keydown.space)="onTabClick(tab.id)">
       @if (tab.icon) {
-      <i [class]="'bocc-tabs-icon fa-solid fa-' + tab.icon" aria-hidden="true"></i>
+      <bocc-master-icon [name]="tab.icon" [size]="'1.5rem'"
+        [color]="tab.id === activeTabId() ? 'brand' : 'default'"></bocc-master-icon>
       }
       <span class="bocc-tabs-label">{{ tab.label }}</span>
     </li>

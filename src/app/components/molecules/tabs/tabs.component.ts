@@ -14,10 +14,12 @@ export interface TabItem {
   icon?: string;
 }
 
+import { MasterIconComponent } from '../../atoms/master-icon/master-icon.component';
+
 @Component({
   selector: 'bocc-tabs',
   standalone: true,
-  imports: [],
+  imports: [MasterIconComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })
