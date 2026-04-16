@@ -57,6 +57,12 @@ export class InputTextComponent {
   /** Placeholder text. Figma: "Placeholder text" */
   placeholder = input<string>(DEFAULT_CONST.EMPTY);
 
+  /** Optional icon to display on the left side of the input */
+  iconLeft = input<string>(DEFAULT_CONST.EMPTY);
+
+  /** Optional icon to display on the right side of the input (except for password type) */
+  iconRight = input<string>(DEFAULT_CONST.EMPTY);
+
   /** Maps to the native required attribute */
   isRequired = input<boolean>(false);
 

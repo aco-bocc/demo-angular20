@@ -24,6 +24,32 @@
       </div>
 
       <div class="demo-card">
+        <h3>With Dynamic Icon (Left & Right)</h3>
+        <bocc-input-text
+          title="Búsqueda Avanzada"
+          placeholder="Buscar..."
+          iconLeft="assets/icons/Info.svg"
+          [isDisable]="simulateDisabled()"
+          [hasError]="simulateError()"
+          errorMessage="Búsqueda vacía"
+        >
+        </bocc-input-text>
+      </div>
+
+      <div class="demo-card">
+        <h3>With Dynamic Icon (Left & Right)</h3>
+        <bocc-input-text
+          title="Búsqueda Avanzada"
+          placeholder="Buscar..."
+          iconRight="assets/icons/Info.svg"
+          [isDisable]="simulateDisabled()"
+          [hasError]="simulateError()"
+          errorMessage="Búsqueda vacía"
+        >
+        </bocc-input-text>
+      </div>
+
+      <div class="demo-card">
         <h3>With Help Tooltip</h3>
         <bocc-input-text
           title="Número de Documento"
@@ -49,7 +75,7 @@
           [(valueInput)]="pswrdValue"
         >
         </bocc-input-text>
-        <p style="margin-top: 8px; font-size: 12px; color: #555f83;">
+        <p style="margin-top: 8px; font-size: 12px; color: #555f83">
           Valor: {{ pswrdValue() ? '*'.repeat(pswrdValue().length) : 'Vacío' }}
         </p>
       </div>

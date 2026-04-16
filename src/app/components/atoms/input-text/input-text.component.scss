@@ -279,3 +279,25 @@ $tooltip-radius: 0.375rem;
     border-radius: 0.25rem;
   }
 }
+
+.input-icon-left,
+.input-icon-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  img {
+    width: $input-icon-size;
+    height: $input-icon-size;
+    opacity: 0.8;
+  }
+}
+
+.input-icon-left {
+  margin-right: 0.5rem;
+}
+
+.input-icon-right {
+  margin-left: 0.5rem;
+}
