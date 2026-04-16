@@ -8,10 +8,12 @@
  */
 import { Component, input, output } from '@angular/core';
 
+import { MasterIconComponent } from '../../atoms/master-icon/master-icon.component';
+
 @Component({
   selector: 'bocc-chips',
   standalone: true,
-  imports: [],
+  imports: [MasterIconComponent],
   templateUrl: './chips.component.html',
   styleUrl: './chips.component.scss',
 })

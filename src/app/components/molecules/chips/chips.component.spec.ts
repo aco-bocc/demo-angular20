@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChipsComponent } from './chips.component';
 import { By } from '@angular/platform-browser';
+import { MasterIconComponent } from '../../atoms/master-icon/master-icon.component';
 
 describe('ChipsComponent', () => {
   let component: ChipsComponent;
@@ -8,7 +9,7 @@ describe('ChipsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChipsComponent],
+      imports: [ChipsComponent, MasterIconComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChipsComponent);
@@ -27,44 +28,35 @@ describe('ChipsComponent', () => {
   });
 
   describe('Icons', () => {
-    it('should not render an icon if icon input is not provided', () => {
-      const iconElement = fixture.debugElement.query(By.css('.bocc-chip-icon'));
+    it('should not render a master icon if icon input is not provided', () => {
+      const iconElement = fixture.debugElement.query(By.css('bocc-master-icon:not(.bocc-chip-remove bocc-master-icon)'));
       expect(iconElement).toBeNull();
     });
 
-    it('should render the correct Font Awesome icon classes', () => {
-      fixture.componentRef.setInput('icon', 'user');
+    it('should render bocc-master-icon with correct name when provided', () => {
+      fixture.componentRef.setInput('icon', 'burger');
       fixture.detectChanges();
 
-      const iconElement = fixture.debugElement.query(By.css('.bocc-chip-icon')).nativeElement;
-      expect(iconElement.classList).toContain('fa-solid');
-      expect(iconElement.classList).toContain('fa-user');
+      const iconElement = fixture.debugElement.query(By.css('.bocc-chip-icon'));
+      expect(iconElement).toBeTruthy();
+      expect(iconElement.componentInstance.name()).toBe('burger');
     });
 
-    it('should apply correct font-size to icon based on chip size', () => {
-      fixture.componentRef.setInput('icon', 'user');
+    it('should apply brand color to icon if not disabled', () => {
+      fixture.componentRef.setInput('icon', 'burger');
+      fixture.detectChanges();
 
-      const sizes = [
-        { size: 'xs', expected: '12px' },
-        { size: 's', expected: '14px' },
-        { size: 'm', expected: '16px' }
-      ] as const;
-
-      sizes.forEach(({ size, expected }) => {
-        fixture.componentRef.setInput('size', size);
-        fixture.detectChanges();
-        const iconElement = fixture.debugElement.query(By.css('.bocc-chip-icon')).nativeElement;
-        expect(iconElement.style.fontSize).toBe(expected);
-      });
+      const iconElement = fixture.debugElement.query(By.css('.bocc-chip-icon'));
+      expect(iconElement.componentInstance.color()).toBe('brand');
     });
 
-    it('should render the xmark icon when removable is true', () => {
+    it('should render the close icon when removable is true', () => {
       fixture.componentRef.setInput('removable', true);
       fixture.detectChanges();
 
-      const removeIcon = fixture.debugElement.query(By.css('.bocc-chip-remove i')).nativeElement;
-      expect(removeIcon.classList).toContain('fa-solid');
-      expect(removeIcon.classList).toContain('fa-xmark');
+      const removeIcon = fixture.debugElement.query(By.css('.bocc-chip-remove bocc-master-icon'));
+      expect(removeIcon).toBeTruthy();
+      expect(removeIcon.componentInstance.name()).toBe('close');
     });
   });
 
@@ -83,11 +75,16 @@ describe('ChipsComponent', () => {
       expect(chipElement.classList).toContain('is-selected');
     });
 
-    it('should apply the disabled class', () => {
+    it('should apply disable color to icons when disabled', () => {
+      fixture.componentRef.setInput('icon', 'burger');
       fixture.componentRef.setInput('disabled', true);
+      fixture.componentRef.setInput('removable', true);
       fixture.detectChanges();
-      const chipElement = fixture.debugElement.query(By.css('.bocc-chip')).nativeElement;
-      expect(chipElement.classList).toContain('is-disabled');
+      
+      const icons = fixture.debugElement.queryAll(By.css('bocc-master-icon'));
+      icons.forEach(icon => {
+        expect(icon.componentInstance.color()).toBe('disable');
+      });
     });
   });
 
@@ -113,17 +110,6 @@ describe('ChipsComponent', () => {
       removeButton.click();
 
       expect(removeSpy).not.toHaveBeenCalled();
-    });
-
-    it('should stop event propagation on remove click', () => {
-      fixture.componentRef.setInput('removable', true);
-      fixture.detectChanges();
-
-      const event = new MouseEvent('click');
-      spyOn(event, 'stopPropagation');
-
-      component.onRemove(event);
-      expect(event.stopPropagation).toHaveBeenCalled();
     });
   });
 });

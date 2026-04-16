@@ -70,11 +70,6 @@ $surface-disabled: var(--bocc-surface-disabled);
     background: $surface-active;
 
     box-shadow: 0 0.125rem 0.125rem 0 rgba(173, 186, 230, 0.40);
-
-    .bocc-chip-remove {
-      width: 0.427625rem;
-      height: 0.427625rem;
-    }
   }
 
   &.is-disabled {
@@ -103,13 +98,20 @@ $surface-disabled: var(--bocc-surface-disabled);
     white-space: nowrap;
   }
 
+  .bocc-chip-remove-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
   .bocc-chip-remove {
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
     border: none;
-    padding: 0.28625rem;
+    padding: 0;
+    margin-left: 0.25rem;
     cursor: pointer;
     color: inherit;
     transition: transform 0.2s;
