@@ -3,15 +3,12 @@
 $input-font-family: 'Poppins', sans-serif;
 $input-label-size: 0.75rem;
 $input-label-weight: 600;
-// Aplicamos el letter-spacing del input-select
 $input-label-spacing: 0.056rem;
 $input-text-size: 0.875rem;
 $input-text-weight: 500;
 $input-text-spacing: 0.044rem;
 $input-helper-size: 0.6875rem;
 $input-helper-spacing: 0.044rem;
-
-// Medidas alineadas con input-select (2.5rem = 40px)
 $input-height: 2.5rem;
 $input-radius: 0.25rem;
 $input-pad-h: 0.5rem;
@@ -34,8 +31,6 @@ $tooltip-radius: 0.375rem;
   gap: $input-gap;
   width: 100%;
 }
-
-// ── Label row ────────────────────────────────────────────────────────────────
 
 .label-row {
   display: flex;
@@ -99,12 +94,12 @@ $tooltip-radius: 0.375rem;
   color: var(--bocc-text-on-brand);         
   border-radius: $tooltip-radius;
   font-family: $input-font-family;
-  font-size: 0.6875rem; // 11px
+  font-size: 0.6875rem; 
   font-weight: 400;
   line-height: 1.4;
   padding: 0.5rem 0.625rem;
   white-space: nowrap;
-  max-width: 15rem; // ~240px
+  max-width: 15rem; 
   box-shadow: var(--bocc-shadow-md);             
   pointer-events: none;
 
@@ -114,7 +109,7 @@ $tooltip-radius: 0.375rem;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border: 0.3125rem solid transparent; // 5px
+    border: 0.3125rem solid transparent; 
     border-top-color: var(--bocc-text-primary);      
   }
 
@@ -151,25 +146,21 @@ $tooltip-radius: 0.375rem;
     outline: none;
   }
 
-  // Error – alineado al formato de input-select
   &.is-error {
     border-color: var(--bocc-status-error);       
     box-shadow: 0 0 0 0.1875rem rgba(226, 76, 76, 0.12);
   }
 
-  // Success 
   &.is-success {
     border-color: var(--bocc-status-success);    
     box-shadow: 0 0 0 0.1875rem rgba(0, 202, 130, 0.15);
   }
 
-  // Warning 
   &.is-warning {
     border-color: var(--bocc-status-warning);        
     box-shadow: 0 0 0 0.1875rem rgba(255, 170, 49, 0.15);
   }
 
-  // Disabled 
   &.is-disabled {
     background: var(--bocc-surface-disabled);      
     border-color: var(--bocc-border-disabled);      
@@ -177,7 +168,6 @@ $tooltip-radius: 0.375rem;
     opacity: 0.8;
   }
 
-  // Filled - opcional si hay que cambiar color al llenarlo
   &.is-filled .input-text {
     color: var(--bocc-text-primary);                 
   }
@@ -197,13 +187,11 @@ $tooltip-radius: 0.375rem;
   line-height: 1;
   cursor: text;
 
-  // Placeholder
   &::placeholder {
     color: var(--bocc-text-placeholder);       
     font-weight: 400;
   }
 
-  // Disabled
   &:disabled {
     color: var(--bocc-text-disabled);               
     cursor: not-allowed;
@@ -264,19 +252,19 @@ $tooltip-radius: 0.375rem;
   img {
     width: $input-icon-size;
     height: $input-icon-size;
-    opacity: 0.65;
-    transition: opacity 150ms ease;
-  }
-
-  &:hover img,
-  &:focus-visible img {
-    opacity: 1;
+    //opacity: 0.65;
+    //transition: opacity 150ms ease;
   }
 
   &:focus-visible {
     outline: 0.125rem solid var(--bocc-border-active);
     outline-offset: 0.125rem;
     border-radius: 0.25rem;
+  }
+
+  &.is-disabled img {
+    color: var(--bocc-border-hover);
+    filter: invert(78%) sepia(9%) saturate(884%) hue-rotate(190deg) brightness(96%) contrast(93%);
   }
 }
 
@@ -290,7 +278,12 @@ $tooltip-radius: 0.375rem;
   img {
     width: $input-icon-size;
     height: $input-icon-size;
-    opacity: 0.8;
+    //opacity: 0.8;
+  }
+
+  &.is-disabled img {
+    color: var(--bocc-border-hover);
+    filter: invert(78%) sepia(9%) saturate(884%) hue-rotate(190deg) brightness(96%) contrast(93%);
   }
 }
 

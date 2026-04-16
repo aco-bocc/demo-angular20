@@ -12,7 +12,7 @@
     [class.has-icon-right]="iconRight() || type() === 'pswrd'"
   >
     @if (iconLeft()) {
-      <div class="input-icon-left">
+      <div class="input-icon-left" [class.is-disabled]="isDisable()">
         <img [src]="iconLeft()" alt="" aria-hidden="true" />
       </div>
     }
@@ -44,7 +44,7 @@
       aria-autocomplete="none"
     />
     @if (iconRight() && type() !== 'pswrd') {
-      <div class="input-icon-right">
+      <div class="input-icon-right" [class.is-disabled]="isDisable()">
         <img [src]="iconRight()" alt="" aria-hidden="true" />
       </div>
     }
@@ -52,6 +52,7 @@
       <button
         type="button"
         class="pswrd-toggle"
+        [class.is-disabled]="isDisable()"
         (click)="togglePswrdVisibility()"
         aria-label="Mostrar u ocultar contraseña"
       >
