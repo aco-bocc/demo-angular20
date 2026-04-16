@@ -1,3 +1,15 @@
+/**
+ * TooltipComponent – Angular 20 Standalone
+ * ─────────────────────────────────────────────────────────────────
+ * Independent tooltip atom. Displays a floating text balloon in
+ * one of four orientations (top, bottom, left, right).
+ * Controlled externally by binding the isVisible input 
+ * from a parent component.
+ *
+ * @author  : Cristian Quintana / Contact & Business IT
+ * @version : 1.0 – 2026/04/13 
+ * ─────────────────────────────────────────────────────────────────
+ */
 import { Component, input, signal, ChangeDetectionStrategy } from '@angular/core';
 
 export type TooltipOrientation = 'top' | 'bottom' | 'left' | 'right';
@@ -12,8 +24,7 @@ export type TooltipOrientation = 'top' | 'bottom' | 'left' | 'right';
     '[class]': '"orientation-" + orientation()',
     '[class.is-visible]': 'isVisible()',
     '[style.top.px]': 'y()',
-    '[style.left.px]': 'x()',
-    'style': 'position: absolute; z-index: 9999; pointer-events: none;'
+    '[style.left.px]': 'x()'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -30,15 +41,6 @@ export class TooltipComponent {
   /** Y Coordinate for fixed positioning */
   readonly y = signal<number>(0);
 
-  /** Manual visibility control */
-  readonly isVisible = signal(false);
-
-  /** Toggle visibility */
-  show() {
-    this.isVisible.set(true);
-  }
-
-  hide() {
-    this.isVisible.set(false);
-  }
+  /** Visibility control managed by the parent */
+  readonly isVisible = input<boolean>(false);
 }

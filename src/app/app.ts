@@ -5,10 +5,11 @@ import { InputTextComponent } from './components/atoms/input-text/input-text.com
 import { InputSelectComponent } from './components/atoms/input-select/input-select.component';
 
 import { TooltipDirective } from './directives/tooltip.directive';
+import { AvatarComponent } from './components/atoms/avatar/avatar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, InputTextComponent, InputSelectComponent, TooltipDirective],
+  imports: [RouterOutlet, InputTextComponent, InputSelectComponent, TooltipDirective, AvatarComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -20,6 +21,10 @@ export class App implements OnInit {
   readonly cities = signal(['Medellín', 'Bogotá', 'Cali', 'Barranquilla', 'Cartagena']);
   readonly simulateError = signal(false);
   readonly simulateDisabled = signal(false);
+  readonly pswrdValue = signal('');
+
+  // User Authentication Simulation
+  readonly currentUser = signal<any>(null);
 
   ngOnInit(): void {
     this.myIpService.getMyIp().subscribe((resp) => {
@@ -35,7 +40,26 @@ export class App implements OnInit {
     this.simulateDisabled.update(v => !v);
   }
 
+  // Avatar Menu Simulation
+  readonly isMenuExpanded = signal(true);
+
+  toggleMenu() {
+    this.isMenuExpanded.update(v => !v);
+  }
+
   onOptionSelected(event: any) {
     console.log('Option selected in playground:', event);
+  }
+
+  simulateLogin() {
+    this.currentUser.set({
+      name: 'Cristian Quintana',
+      role: 'Analista Senior de Desarrollo',
+      photo: 'https://i.pravatar.cc/150?u=antigravity_dev'
+    });
+  }
+
+  simulateLogout() {
+    this.currentUser.set(null);
   }
 }

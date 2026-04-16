@@ -1,38 +1,6 @@
 <div class="input-form">
   <div class="label-row">
-    <label
-      #inputLabel
-      class="input-label"
-      [attr.for]="id()"
-    >{{ title() }}</label>
-
-    <!-- Tooltip trigger icon – only rendered when label overflows -->
-    @if (isTitleOverflowing()) {
-      <button
-        type="button"
-        class="tooltip-trigger"
-        aria-label="More information"
-        (mouseenter)="showTooltip()"
-        (mouseleave)="hideTooltip()"
-        (click)="toggleTooltip()"
-        (keydown.enter)="toggleTooltip()"
-        (keydown.space)="toggleTooltip()"
-      >
-        <img [src]="imageTooltip" alt="info" width="16" height="16" />
-
-        <!-- Tooltip balloon -->
-        @if (isTooltipVisible()) {
-          <div
-            #tooltipMessage
-            class="tooltip-balloon"
-            [class.tooltip-balloon--two-lines]="isTwoLines()"
-            role="tooltip"
-          >
-            {{ helpText() }}
-          </div>
-        }
-      </button>
-    }
+    <label class="input-label" [attr.for]="id()">{{ title() }}</label>
   </div>
   <div
     class="input-container"
@@ -40,13 +8,20 @@
     [class.is-error]="showError()"
     [class.is-disabled]="isDisable()"
     [class.is-filled]="valueInput()"
+    [class.has-icon-left]="iconLeft()"
+    [class.has-icon-right]="iconRight() || type() === 'pswrd'"
   >
+    @if (iconLeft()) {
+      <div class="input-icon-left" [class.is-disabled]="isDisable()">
+        <img [src]="iconLeft()" alt="" aria-hidden="true" />
+      </div>
+    }
     <input
       class="input-text"
       [attr.maxlength]="maxLength()"
       [attr.minlength]="minLength()"
       [disabled]="isDisable()"
-      [attr.type]="type()"
+      [attr.type]="effectiveType()"
       [attr.id]="id()"
       [attr.name]="id()"
       [attr.placeholder]="placeholder()"
@@ -68,20 +43,28 @@
       (keydown)="onKeydown()"
       aria-autocomplete="none"
     />
+    @if (iconRight() && type() !== 'pswrd') {
+      <div class="input-icon-right" [class.is-disabled]="isDisable()">
+        <img [src]="iconRight()" alt="" aria-hidden="true" />
+      </div>
+    }
+    @if (type() === 'pswrd') {
+      <button
+        type="button"
+        class="pswrd-toggle"
+        [class.is-disabled]="isDisable()"
+        (click)="togglePswrdVisibility()"
+        aria-label="Mostrar u ocultar contraseña"
+      >
+        <img [src]="showPswrd() ? icon_OpenEye : icon_CloseEye" alt="" />
+      </button>
+    }
   </div>
-  
+
   @if (showError() && errorMessage()) {
     <div class="error-row" role="alert" aria-live="polite">
-      <img
-        [src]="icon_Error"
-        alt="error"
-        class="error-icon"
-        width="14"
-        height="14"
-        aria-hidden="true"
-      />
+      <img [src]="icon_Error" alt="error" class="error-icon" width="14" height="14" aria-hidden="true" />
       <span class="error-message">{{ errorMessage() }}</span>
     </div>
   }
-
 </div>

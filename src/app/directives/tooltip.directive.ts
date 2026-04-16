@@ -68,6 +68,7 @@ export class TooltipDirective implements OnDestroy {
       // 2. Pass inputs
       this.componentRef.setInput('message', this.message);
       this.componentRef.setInput('orientation', this.orientation);
+      this.componentRef.setInput('isVisible', true);
 
       // 3. Attach to application (for change detection to work)
       this.appRef.attachView(this.componentRef.hostView);
@@ -78,9 +79,6 @@ export class TooltipDirective implements OnDestroy {
 
       // 5. Calculate and set initial position
       this.updatePosition();
-
-      // 6. Show with animation
-      this.componentRef.instance.show();
     }
   }
 
@@ -130,8 +128,6 @@ export class TooltipDirective implements OnDestroy {
 
   private hideTooltip(): void {
     if (this.componentRef) {
-      this.componentRef.instance.hide();
-      
       // Detach and destroy
       this.appRef.detachView(this.componentRef.hostView);
       this.componentRef.destroy();
