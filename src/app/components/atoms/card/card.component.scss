@@ -1,63 +1,51 @@
-/**
- * card.component.scss
- * ─────────────────────────────────────────────────────────────────
- * Styles for the ui-card atom.
- * Provides a flexible container with configurable spacing,
- * border radius, and elevation.
- * ─────────────────────────────────────────────────────────────────
- */
-
-// ── Host container ─────────────────────────────────────────────────────────
+$bg-white:    var(--class-white);
+$border-gray: var(--bocc-surface-disabled);
 
 :host {
   display: block;
 }
 
-// ── Base card styles ───────────────────────────────────────────────────────
-
 .card {
   display: block;
   width: 100%;
-  background: #ffffff;
-  border: 1px solid #ececec;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  box-sizing: border-box;
 
-  // ── Full height modifier ─────────────────────────────────────────
+  
+  background: $bg-white;
+
+  border: 0.0625rem solid $border-gray;
+
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 
   &--full-height {
     height: 100%;
   }
-
-  // ── Padding modifiers ────────────────────────────────────────────
 
   &--padding-none {
     padding: 0;
   }
 
   &--padding-sm {
-    padding: 12px;
+    padding: 0.75rem;
   }
 
   &--padding-md {
-    padding: 16px;
+    padding: 1rem;
   }
 
   &--padding-lg {
-    padding: 24px;
+    padding: 1.5rem;
   }
 
-  // ── Border radius modifiers ─────────────────────────────────────
-
   &--radius-sm {
-    border-radius: 8px;
+    border-radius: 0.5rem;
   }
 
   &--radius-md {
-    border-radius: 12px;
+    border-radius: 0.75rem;
   }
 
   &--radius-lg {
-    border-radius: 16px;
+    border-radius: 1rem;
   }
 }

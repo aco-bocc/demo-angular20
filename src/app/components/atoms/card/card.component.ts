@@ -5,8 +5,10 @@
  * Provides configurable padding, border radius, and height behavior.
  * Designed to wrap arbitrary content using content projection.
  * ─────────────────────────────────────────────────────────────────
+ * @author Carlos Nuncira / Contact & Business IT
+ * @version 1.0.3, 2026/04/17 – Migrated to Angular 20 standalone + signals
  */
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 /** Supported padding sizes. */
 type CardPadding = 'none' | 'sm' | 'md' | 'lg';
@@ -15,40 +17,33 @@ type CardPadding = 'none' | 'sm' | 'md' | 'lg';
 type CardRadius = 'sm' | 'md' | 'lg';
 
 @Component({
-  selector: 'ui-card',
+  selector: 'bocc-card',
   standalone: true,
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiCardComponent {
+export class CardComponent {
   // ── Inputs ───────────────────────────────────────────────────────────────
 
   /** Controls internal spacing of the card. */
-  @Input() padding: CardPadding = 'md';
+  readonly padding = input<CardPadding>('md');
 
   /** Controls border radius of the card. */
-  @Input() radius: CardRadius = 'md';
+  readonly radius = input<CardRadius>('md');
 
-  /**
-   * When true, the card stretches to fill the available height
-   * of its parent container.
-   */
-  @Input() fullHeight = false;
+  /** Enables full height behavior. */
+  readonly fullHeight = input<boolean>(false);
 
   // ── Derived state ────────────────────────────────────────────────────────
 
-  /**
-   * Resolves the CSS class applied to the card container.
-   * Combines base class with padding, radius, and optional height modifiers.
-   */
-  get cardClass(): string {
-    const classes = ['card', `card--padding-${this.padding}`, `card--radius-${this.radius}`];
+  readonly cardClass = computed(() => {
+    const classes = ['card', `card--padding-${this.padding()}`, `card--radius-${this.radius()}`];
 
-    if (this.fullHeight) {
+    if (this.fullHeight()) {
       classes.push('card--full-height');
     }
 
     return classes.join(' ');
-  }
+  });
 }

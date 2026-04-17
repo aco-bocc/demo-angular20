@@ -1,13 +1,3 @@
-<!--
-  UiCardComponent – Template
-  ──────────────────────────────────────────────────────────────────
-  Reusable container component.
-  Acts as a flexible wrapper for any projected content using ng-content.
-  ──────────────────────────────────────────────────────────────────
--->
-
-<!-- ── Card container ────────────────────────────────────────────── -->
-<div [class]="cardClass">
-  <!-- Content projection slot -->
+<div [class]="cardClass()">
   <ng-content></ng-content>
 </div>

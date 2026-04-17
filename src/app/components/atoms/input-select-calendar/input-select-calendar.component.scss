@@ -1,24 +1,13 @@
-/**
- * input-select-calendar.component.scss
- * ─────────────────────────────────────────────────────────────────
- * Styles for the calendar input component.
- * Includes trigger field, dropdown calendar, and interaction states.
- * ─────────────────────────────────────────────────────────────────
- */
-
-// ── Host ─────────────────────────────────────────────────────────
 :host {
   display: inline-block;
   width: 100%;
 }
 
-// ── Field wrapper ────────────────────────────────────────────────
 
 .calendar-field {
   position: relative;
   width: 100%;
 
-  // Label
   &__label {
     display: inline-block;
     margin-bottom: 8px;
@@ -28,7 +17,6 @@
     line-height: 1.2;
   }
 
-  // Trigger input
   &__trigger {
     display: flex;
     align-items: center;
@@ -63,7 +51,6 @@
       opacity: 0.7;
     }
   }
- // Value text
   &__value {
     color: #334155;
     font-size: 14px;
@@ -81,8 +68,6 @@
     line-height: 1;
   }
 }
-
-// ── Calendar dropdown ─────────────────────────────────────────────
 
 .calendar {
   position: absolute;

@@ -1,30 +1,18 @@
-<!--
-  UiTextLinkComponent – Template
-  ──────────────────────────────────────────────────────────────────
-  Reusable text-based link component.
-  Supports external navigation (href), internal routing (routerLink),
-  or fallback button interaction.
-  ──────────────────────────────────────────────────────────────────
--->
-
-<!-- ── External link (href) ───────────────────────────────────────── -->
-@if (hasHref) {
-<a [class]="linkClass" [href]="disabled ? null : href" [attr.target]="target"
-  [attr.rel]="target === '_blank' ? rel : null" [attr.aria-disabled]="disabled" (click)="onClick()">
-  {{ label }}
+@if (hasHref()) {
+<a [class]="linkClass()" [href]="disabled() ? null : href()" [attr.target]="target()"
+  [attr.rel]="target() === '_blank' ? rel() : null" [attr.aria-disabled]="disabled()" (click)="onClick()">
+  {{ label() }}
 </a>
 }
 
-<!-- ── Internal navigation (routerLink) ───────────────────────────── -->
-@else if (hasRouterLink) {
-<a [class]="linkClass" [routerLink]="disabled ? null : routerLink" [attr.aria-disabled]="disabled" (click)="onClick()">
-  {{ label }}
+@else if (hasRouterLink()) {
+<a [class]="linkClass()" [routerLink]="disabled() ? null : routerLink()" [attr.aria-disabled]="disabled()" (click)="onClick()">
+  {{ label() }}
 </a>
 }
 
-<!-- ── Button fallback ────────────────────────────────────────────── -->
 @else {
-<button type="button" [class]="linkClass" [disabled]="disabled" (click)="onClick()">
-  {{ label }}
+<button type="button" [class]="linkClass()" [disabled]="disabled()" (click)="onClick()">
+  {{ label() }}
 </button>
 }

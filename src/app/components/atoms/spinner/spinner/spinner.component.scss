@@ -1,19 +1,8 @@
-/**
- * spinner.component.scss
- * ─────────────────────────────────────────────────────────────────
- * Styles for the ui-spinner atom.
- * Implements a radial segmented animation using CSS only.
- * Supports fullscreen overlay and inline variants.
- * ─────────────────────────────────────────────────────────────────
- */
-
-// ── Host behavior ─────────────────────────────────────────────────────────
+$indicator-color: var(--bocc-status-info-soft);
 
 :host {
   display: contents;
 }
-
-// ── Root container ────────────────────────────────────────────────────────
 
 .spinner {
   display: flex;
@@ -23,20 +12,16 @@
   background: var(--class-fourth-opacity, rgba(255, 255, 255, 0.72));
   z-index: 9999;
 
-  // Fullscreen overlay mode
   &--fullscreen {
     position: fixed;
     inset: 0;
     min-height: 100vh;
   }
 
-  // Inline mode
   &:not(.spinner--fullscreen) {
     position: relative;
-    min-height: 120px;
+    min-height: 7.5rem;
   }
-
-  // ── Content wrapper ─────────────────────────────────────────────
 
   &__content {
     display: flex;
@@ -44,40 +29,35 @@
     justify-content: center;
   }
 
-  // ── Spinner indicator ───────────────────────────────────────────
-
   &__indicator {
-    --spinner-size: 48px;
-    --segment-width: 4px;
-    --segment-height: 12px;
-    --segment-radius: 999px;
-    --segment-color: #5aa9ff;
+    --spinner-size: 3rem;
+    --segment-width: 0.25rem;
+    --segment-height: 0.75rem;
+    --segment-radius: 999rem;
+    --segment-color: $indicator-color;
 
     position: relative;
     width: var(--spinner-size);
     height: var(--spinner-size);
   }
 
-  // Size modifiers
   &__indicator--sm {
-    --spinner-size: 28px;
-    --segment-width: 3px;
-    --segment-height: 8px;
+    --spinner-size: 1.75rem;
+    --segment-width: 0.1875rem;
+    --segment-height: 0.5rem;
   }
 
   &__indicator--md {
-    --spinner-size: 40px;
-    --segment-width: 4px;
-    --segment-height: 10px;
+    --spinner-size: 2.5rem;
+    --segment-width: 0.25rem;
+    --segment-height: 0.625rem;
   }
 
   &__indicator--lg {
-    --spinner-size: 56px;
-    --segment-width: 4px;
-    --segment-height: 14px;
+    --spinner-size: 3.5rem;
+    --segment-width: 0.25rem;
+    --segment-height: 0.875rem;
   }
-
-  // ── Radial segments ─────────────────────────────────────────────
 
   &__segment {
     position: absolute;
@@ -89,18 +69,10 @@
     margin-top: calc(var(--spinner-size) / -2);
     border-radius: var(--segment-radius);
     background: var(--segment-color);
-
-    // Rotation anchor point
     transform-origin: center calc(var(--spinner-size) / 2);
-
-    // Initial faded state
     opacity: 0.2;
-
-    // Animation applied to each segment
     animation: ui-spinner-fade 0.8s linear infinite;
   }
-
-  // ── Segment rotation + animation delay ──────────────────────────
 
   &__segment--1 {
     transform: rotate(0deg);
@@ -143,12 +115,6 @@
   }
 }
 
-// ── Animation ─────────────────────────────────────────────────────────────
-
-/**
- * Creates a fading effect across segments to simulate rotation.
- * Each segment fades in and out with staggered delays.
- */
 @keyframes ui-spinner-fade {
   0% {
     opacity: 1;

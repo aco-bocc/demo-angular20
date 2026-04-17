@@ -1,18 +1,13 @@
-/**
- * badge.component.scss
- * ─────────────────────────────────────────────────────────────────
- * Styles for the ui-badge atom.
- * Provides visual variants for semantic states.
- * ─────────────────────────────────────────────────────────────────
- */
-
-// ── Host container ─────────────────────────────────────────────────────────
+$bg-color-red :var(--bocc-status-error);
+$bg-color-blue :var(--bocc-status-info);
+$bg-color-green :var(--bocc-status-success);
+$bg-red-font :var(--bocc-status-error-bg);
+$bg-blue-font :var(--bocc-status-info-bg);
+$bg-green-font :var(--bocc-status-success-bg);
 
 :host {
   display: inline-flex;
 }
-
-// ── Base badge styles ──────────────────────────────────────────────────────
 
 .badge {
   display: inline-flex;
@@ -29,24 +24,18 @@
   white-space: nowrap;
   box-sizing: border-box;
 
-  // ── High variant (e.g. critical, error) ──────────────────────────
-
   &--high {
-    background-color: #f3e4e7;
-    color: #b12a2f;
+    background-color: $bg-red-font;
+    color: $bg-color-red;
   }
-
-  // ── Medium variant (e.g. informational) ──────────────────────────
 
   &--medium {
-    background-color: #dfeaf7;
-    color: #355796;
+    background-color: $bg-blue-font;
+    color: $bg-color-blue;
   }
 
-  // ── Low variant (e.g. success, positive) ─────────────────────────
-
   &--low {
-    background-color: #dcefe7;
-    color: #1d8a57;
+    background-color: $bg-green-font;
+    color: $bg-color-green;
   }
 }

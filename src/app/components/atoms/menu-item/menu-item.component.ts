@@ -5,147 +5,93 @@
  * Supports external links, router navigation, and button interaction.
  * Includes optional icons, subtitle, and badge.
  * ─────────────────────────────────────────────────────────────────
+ * @author Carlos Nuncira / Contact & Business IT
+ * @version 1.0.3, 2026/04/17 – Migrated to Angular 20 standalone + signals
  */
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DEFAULT_CONST } from '../../../utils/global-strings';
 
 @Component({
-  selector: 'ui-menu-item',
+  selector: 'bocc-menu-item',
   standalone: true,
   imports: [RouterLink],
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiMenuItemComponent {
-  // ── Inputs: content ──────────────────────────────────────────────────────
+export class MenuItemComponent {
 
-  /** Main label displayed in the item. */
-  @Input() label: string = DEFAULT_CONST.EMPTY;
+  // ── Inputs: content ─────────────────────────────────────────────
 
-  /** Optional subtitle displayed below the label. */
-  @Input() subtitle: string = DEFAULT_CONST.EMPTY;
+  readonly label = input<string>(DEFAULT_CONST.EMPTY);
+  readonly subtitle = input<string>(DEFAULT_CONST.EMPTY);
 
-  // ── Inputs: icons ────────────────────────────────────────────────────────
+  // ── Inputs: icons ───────────────────────────────────────────────
 
-  /** Icon displayed at the start of the item. */
-  @Input() startIconPath: string = DEFAULT_CONST.EMPTY;
+  readonly startIconPath = input<string>(DEFAULT_CONST.EMPTY);
+  readonly endIconPath = input<string>(DEFAULT_CONST.EMPTY);
 
-  /** Icon displayed at the end of the item. */
-  @Input() endIconPath: string = DEFAULT_CONST.EMPTY;
+  // ── Inputs: navigation ──────────────────────────────────────────
 
-  // ── Inputs: navigation ───────────────────────────────────────────────────
+  readonly href = input<string>(DEFAULT_CONST.EMPTY);
+  readonly target = input<'_self' | '_blank' | '_parent' | '_top'>('_self');
+  readonly rel = input<string>('noopener noreferrer');
+  readonly routerLink = input<string | readonly string[]>(DEFAULT_CONST.EMPTY);
 
-  /** External navigation URL. */
-  @Input() href: string = DEFAULT_CONST.EMPTY;
+  // ── Inputs: state ───────────────────────────────────────────────
 
-  /** Target attribute for external links. */
-  @Input() target: '_self' | '_blank' | '_parent' | '_top' = '_self';
+  readonly disabled = input<boolean>(false);
+  readonly active = input<boolean>(false);
+  readonly selected = input<boolean>(false);
 
-  /** Rel attribute for external links. */
-  @Input() rel: string = 'noopener noreferrer';
+  // ── Inputs: badge ───────────────────────────────────────────────
 
-  /** Internal navigation using Angular router. */
-  @Input() routerLink: string | readonly string[] = DEFAULT_CONST.EMPTY;
+  readonly badgeText = input<string>(DEFAULT_CONST.EMPTY);
+  readonly badgeVariant = input<'high' | 'medium' | 'low'>('medium');
 
-  // ── Inputs: state ────────────────────────────────────────────────────────
+  // ── Outputs ─────────────────────────────────────────────────────
 
-  /** Disables interaction when true. */
-  @Input() disabled = false;
+  readonly itemClick = output<void>();
 
-  /** Marks the item as active. */
-  @Input() active = false;
+  // ── Derived state ───────────────────────────────────────────────
 
-  /** Marks the item as selected. */
-  @Input() selected = false;
-
-  // ── Inputs: badge ────────────────────────────────────────────────────────
-
-  /** Text displayed in the badge. */
-  @Input() badgeText: string = DEFAULT_CONST.EMPTY;
-
-  /** Badge variant controlling color. */
-  @Input() badgeVariant: 'high' | 'medium' | 'low' = 'medium';
-
-  // ── Outputs ─────────────────────────────────────────────────────────────
-
-  /** Emits when the item is clicked. */
-  @Output() readonly itemClick = new EventEmitter<void>();
-
-  // ── Derived state ───────────────────────────────────────────────────────
-
-  /**
-   * Resolves the CSS class applied to the root element.
-   */
-  get containerClass(): string {
+  readonly containerClass = computed(() => {
     const classes = ['menu-item'];
 
-    if (this.active) {
-      classes.push('menu-item--active');
-    }
-
-    if (this.selected) {
-      classes.push('menu-item--selected');
-    }
-
-    if (this.disabled) {
-      classes.push('menu-item--disabled');
-    }
+    if (this.active()) classes.push('menu-item--active');
+    if (this.selected()) classes.push('menu-item--selected');
+    if (this.disabled()) classes.push('menu-item--disabled');
 
     return classes.join(' ');
-  }
+  });
 
-  /**
-   * Resolves badge class based on variant.
-   */
-  get badgeClass(): string {
-    return `menu-item__badge menu-item__badge--${this.badgeVariant}`;
-  }
+  readonly badgeClass = computed(() =>
+    `menu-item__badge menu-item__badge--${this.badgeVariant()}`
+  );
 
-  // ── Conditional helpers ──────────────────────────────────────────────────
+  // ── Conditional helpers ─────────────────────────────────────────
 
-  /** True when subtitle is present. */
-  get hasSubtitle(): boolean {
-    return this.subtitle.trim().length > 0;
-  }
+  readonly hasSubtitle = computed(() => this.subtitle().trim().length > 0);
+  readonly hasStartIcon = computed(() => this.startIconPath().trim().length > 0);
+  readonly hasEndIcon = computed(() => this.endIconPath().trim().length > 0);
+  readonly hasBadge = computed(() => this.badgeText().trim().length > 0);
+  readonly hasHref = computed(() => this.href().trim().length > 0);
 
-  /** True when start icon is defined. */
-  get hasStartIcon(): boolean {
-    return this.startIconPath.trim().length > 0;
-  }
+  readonly hasRouterLink = computed(() => {
+    const value = this.routerLink();
 
-  /** True when end icon is defined. */
-  get hasEndIcon(): boolean {
-    return this.endIconPath.trim().length > 0;
-  }
-
-  /** True when badge has content. */
-  get hasBadge(): boolean {
-    return this.badgeText.trim().length > 0;
-  }
-
-  /** True when external link is defined. */
-  get hasHref(): boolean {
-    return this.href.trim().length > 0;
-  }
-
-  /** True when routerLink is defined. */
-  get hasRouterLink(): boolean {
-    if (Array.isArray(this.routerLink)) {
-      return this.routerLink.length > 0;
+    if (Array.isArray(value)) {
+      return value.length > 0;
     }
 
-    return String(this.routerLink).trim().length > 0;
-  }
+    return String(value).trim().length > 0;
+  });
 
-  // ── User interaction ─────────────────────────────────────────────────────
+  // ── User interaction ────────────────────────────────────────────
 
-  /**
-   * Emits click event when not disabled.
-   */
   onClick(): void {
-    if (this.disabled) {
+    if (this.disabled()) {
       return;
     }
 

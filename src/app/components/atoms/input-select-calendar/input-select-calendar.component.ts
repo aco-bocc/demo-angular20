@@ -6,6 +6,8 @@
  * Includes month/year navigation, disabled-date handling,
  * outside-click closing behavior, and formatted value emission.
  * ─────────────────────────────────────────────────────────────────
+ * @author Carlos Nuncira / Contact & Business IT
+ * @version 1.0.3, 2026/04/17 – Migrated to Angular 20 standalone + signals
  */
 import {
   ChangeDetectionStrategy,
@@ -47,13 +49,13 @@ interface CalendarValue {
 }
 
 @Component({
-  selector: 'ui-input-select-calendar',
+  selector: 'bocc-input-select-calendar',
   standalone: true,
   templateUrl: './input-select-calendar.component.html',
   styleUrls: ['./input-select-calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiInputSelectCalendarComponent {
+export class InputSelectCalendarComponent {
   // ── View references ──────────────────────────────────────────────────────
 
   /**

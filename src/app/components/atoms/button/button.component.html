@@ -1,18 +1,7 @@
-<!--
-  UiButtonComponent – Template
-  ──────────────────────────────────────────────────────────────────
-  Reusable button atom.
-  Supports visual variants, optional icon rendering, disabled state,
-  and hover-based icon switching.
-  ──────────────────────────────────────────────────────────────────
--->
+<button type="button" [class]="resolvedClass()" [disabled]="disabled()" (click)="onClick()"
+	(mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+	<div class="btn-icon" [hidden]="!showIcon()" [style.background-image]="iconBackgroundImage()" aria-hidden="true">
+	</div>
 
-<!-- ── Root button element ─────────────────────────────────────────────── -->
-<button type="button" [class]="resolvedClass" [disabled]="disabled" (click)="onClick()" (mouseenter)="onMouseEnter()"
-	(mouseleave)="onMouseLeave()">
-	<!-- Optional icon shown at the start of the button content -->
-	<div class="btn-icon" [hidden]="!showIcon" [style.background-image]="iconBackgroundImage" aria-hidden="true"></div>
-
-	<!-- Optional text label -->
-	<span [hidden]="!hasLabel">{{ label }}</span>
+	<span [hidden]="!hasLabel()">{{ label() }}</span>
 </button>

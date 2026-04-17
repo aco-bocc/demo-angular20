@@ -1,18 +1,10 @@
-/**
- * text-link.component.scss
- * ─────────────────────────────────────────────────────────────────
- * Styles for the ui-text-link atom.
- * Provides text-based interaction styles with semantic variants.
- * ─────────────────────────────────────────────────────────────────
- */
-
-// ── Host container ─────────────────────────────────────────────────────────
+$brand-primary:   var(--bocc-brand-primary);
+$brand-neutral:   var(--bocc-text-bold);
+$brand-danger:   var(--bocc-status-error-strong);
 
 :host {
   display: inline-flex;
 }
-
-// ── Base text link styles ─────────────────────────────────────────────────
 
 .text-link {
   background: none;
@@ -21,7 +13,7 @@
   margin: 0;
 
   font-family: inherit;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
 
   cursor: pointer;
@@ -31,32 +23,29 @@
     color 0.2s ease,
     opacity 0.2s ease;
 
-  // Hover state
   &:hover:not(.text-link--disabled) {
     text-decoration: underline;
   }
 
-  // Focus state for accessibility
   &:focus-visible {
-    outline: 2px solid rgba(0, 129, 255, 0.2);
-    outline-offset: 2px;
+    outline: 0.125rem solid rgba(0, 129, 255, 0.2);
+    outline-offset: 0.125rem;
   }
 
-  // ── Variants ─────────────────────────────────────────────────────
-
   &--primary {
-    color: var(--bocc-brand-primary, #0081ff);
+    /* TODO: Replace fallback hex color with palette token */
+    color: $brand-primary;
   }
 
   &--neutral {
-    color: #3f3f46;
+    /* TODO: Replace hex color with palette token */
+    color: $brand-neutral;
   }
 
   &--danger {
-    color: #b12a2f;
+    /* TODO: Replace hex color with palette token */
+    color: $brand-danger;
   }
-
-  // ── Disabled state ───────────────────────────────────────────────
 
   &--disabled {
     opacity: 0.5;
